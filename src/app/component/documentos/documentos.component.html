@@ -1,0 +1,74 @@
+<div class="mx-auto text-center">
+    <h1 id="titulo">Agregar Documentos</h1>
+  </div>
+
+  <div class="container">
+      <form action="">
+
+        <div class="row">
+            <div class="col">
+                <label for="exampleInputPassword2">ID Documentos</label>
+                <input [(ngModel)]="idDocumentos" #balance name="idDocumentos" placeholder="Id documentos" type="text"
+                  class="form-control" id="idDocumentos"><br />
+            </div>
+            <div class="col">
+              <label for="exampleInputPassword4">ID Cliente</label>
+              <input [(ngModel)]="idCliente" #version name="idCliente" placeholder="Id del cliente" type="text" id="idCliente"
+                class="form-control"><br />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCarta($event)' required>
+                    <label class="custom-file-label" for="validatedCustomFile">Carta Laboral</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirRut($event)' required>
+                    <label class="custom-file-label" for="validatedCustomFile">Rut</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+            </div>
+        </div>
+
+          <div class="row">
+            <div class="col">
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCedula($event)' required>
+                    <label class="custom-file-label" for="validatedCustomFile">Cedula</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirSolicitud($event)' required>
+                    <label class="custom-file-label" for="validatedCustomFile">Solicitud Arrendamiento</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCodeudor($event)' required>
+                    <label class="custom-file-label" for="validatedCustomFile">Cedula Codeudor</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="exampleInputPassword2">Fecha Ingreso</label>
+                <input [(ngModel)]="fechaIngreso" #balance name="idDocumentos" placeholder="Id documentos" type="text"
+                  class="form-control" id="idDocumentos"><br />
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" (click)="guardar()">Agregar</button>
+          </div>
+      </form>
+  </div>

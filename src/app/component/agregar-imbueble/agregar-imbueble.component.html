@@ -1,0 +1,57 @@
+  <div class="mx-auto text-center">
+    <h1 id="titulo">Agregar Inmueble</h1>
+  </div>
+  
+  <div *ngIf="showMsg">
+    {{msg}}
+  </div>
+  
+  <div id="login" class="mx-auto">
+    <form>
+      <div class="row">
+        <div class="col">
+          <label for="exampleInputEmail1">ID Inmueble</label>
+          <input [(ngModel)]="idInmueble" #accoId name="id Inmueble" placeholder="Id Inmueble" class="form-control"
+            type="text" id="idInmueble"><br />
+        </div>
+        <div class="col">
+          <label for="exampleInputPassword2">Tipo Inmueble</label>
+          <select [(ngModel)]="tipoInmueble" class="form-control" name="tipoInmueble" required>
+            <option disabled selected>Tipo Inmueble</option>
+            <option value="Casa">Casa</option>
+            <option value="Apartamento">Apartamento</option>
+            <option value="Finca">Finca</option>
+            <option value="Local">Local</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col">
+            <label for="exampleInputPassword2">Direccion</label>
+            <input [(ngModel)]="direccion" #balance name="direccion" placeholder="Tipo inmueble" type="text"
+              class="form-control" id="direccion"><br />
+        </div>
+        <div class="col">
+          <label for="exampleInputPassword4">Descripcion</label>
+          <input [(ngModel)]="descripcion" #version name="descripcion" placeholder="Descripcion" type="text" id="descripcion"
+            class="form-control"><br />
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <button mat-raised-button (click)="crear()" style="margin-right:5px;">Crear</button>
+          </div>
+          <div class="col-3">
+  
+          </div>
+          <div class="col">
+            <button mat-raised-button routerLink="../agregar-inmueble" style="margin-right:5px;">Cancelar</button>
+          </div>
+  
+        </div>
+      </div>
+    </form>
+  </div>

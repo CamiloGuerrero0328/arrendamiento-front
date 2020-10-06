@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "arrendamiento-pc": {
+      "hosting": {
+        "arm-front": [
+          "arrendamiento-pc"
+        ]
+      }
+    }
+  }
+}

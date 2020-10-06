@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -117,8 +118,16 @@
               "devServerTarget": "arm-front:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "arm-front"
+    }
+  },
+  "defaultProject": "arm-front",
+  "cli": {
+    "analytics": "e3240530-f8cc-406c-8ddc-666b3854776a"
+  }
 }
