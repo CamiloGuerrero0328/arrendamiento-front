@@ -23,6 +23,8 @@ import { ListaClienteArrendatarioComponent } from './component/lista-cliente-arr
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistroClienteComponent } from './component/registro-cliente/registro-cliente.component';
 import { RegistroAbogadoComponent } from './component/registro-abogado/registro-abogado.component';
+import { AplicarInmuebleComponent } from './component/aplicar-inmueble/aplicar-inmueble.component';
+import { ListaInmuebleFullComponent } from './component/lista-inmueble-full/lista-inmueble-full.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { RegistroAbogadoComponent } from './component/registro-abogado/registro-
     ListaDocumentosClienteComponent,
     ListaClienteArrendatarioComponent,
     RegistroClienteComponent,
-    RegistroAbogadoComponent
+    RegistroAbogadoComponent,
+    AplicarInmuebleComponent,
+    ListaInmuebleFullComponent
   ],
   imports: [
     BrowserModule,

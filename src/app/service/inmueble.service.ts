@@ -19,6 +19,10 @@ export class InmuebleService {
     return this.httpClient.get(this.url+'/findById/'+id);
   }
 
+  public findByIdInmueble(id:number): Observable<any>{
+    return this.httpClient.get(this.url+'/findByIdInmueble/'+id);
+  }
+
   public findByIdCliente(id:number): Observable<any>{
     return this.httpClient.get(this.url+'/findByIdCliente/'+id);
   }
@@ -32,10 +36,10 @@ export class InmuebleService {
   }
   
   public update(inmueble: Inmueble): Observable<any>{
-    return this.httpClient.put(this.url + '/update', inmueble);
+    return this.httpClient.put(this.url + '/update/', inmueble);
   }
   
   public delete(id:string): Observable<any>{
-    return this.httpClient.delete(this.url+'/delete'+id);
+    return this.httpClient.delete(this.url+'/delete/'+id);
   }
 }

@@ -1,0 +1,24 @@
+<h1 id="liscue">Lista Inmuebles Completa</h1>
+
+<div *ngIf="showMsg">
+  {{msg}}
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <td>TIPO INMUEBLE</td>
+    <td>DIRECCION</td>
+    <td>DESCRIPCION</td>
+    <td>ID CLIENTE</td>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let Inmueble of listaInmueble">
+    <td>{{Inmueble.tipoInmueble}}</td>
+    <td>{{Inmueble.direccion}}</td>
+    <td>{{Inmueble.descripcion}}</td>
+    <td>{{Inmueble.idCliente}}</td>
+  </tr>
+</tbody>
+</table>

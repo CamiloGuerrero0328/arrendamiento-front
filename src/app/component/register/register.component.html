@@ -1,39 +1,44 @@
-<div id="title" class="mx-auto text-center">
-    <h1 id="titulo">Registro</h1>
-</div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
 
-<div id="login" class="mx-auto">
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://goalamarketing.com/wp-content/uploads/2017/01/logo-inmolive2.png" id="logo" alt="User Icon" />
+    </div>
+
     <form>
 
-          <div class="form-group">
-            <input [(ngModel)]="email" placeholder="Correo electrónico" name="email" id="email" type="email" class="form-control" required>
-            <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico con nadie más.</small>
-          </div>
-        
-          <div class="form-group">
-            <input [(ngModel)]="password" placeholder="Contraseña" name="password" id="password" type="password" class="form-control" required>
-          </div>
 
-          <div class="form-group">
-            <select [(ngModel)]="tipoUsuario" class="form-control" name="tipoUsuario" required>
-              <option disabled selected>Tipo Usuario</option>
-              <option value="1">Cliente</option>
-              <option value="2">Abogado</option>
-            </select>
-          </div>
+      <input [(ngModel)]="email" type="text" id="login" class="fadeIn second" name="login" placeholder="Correo"
+        required>
 
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <button class="btn btn-primary" (click)="register()">Registrar</button>
-              </div>
-              <div class="col-3">
-        
-              </div>
-              <div class="col">
-                <button routerLink="/login" class="btn btn-primary">Cancelar</button>
-              </div>
-            </div>
+
+
+      <input [(ngModel)]="password" type="password" id="password" class="fadeIn third" name="login"
+        placeholder="Contraseña" required>
+
+
+      <div class="form-group">
+        <select [(ngModel)]="tipoUsuario"  class="form-control" name="tipoUsuario" required>
+          <option disabled selected>Tipo Usuario</option>
+          <option value="1">Cliente</option>
+          <option value="2">Abogado</option>
+        </select>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-primary" (click)="register()">Registrar</button>
           </div>
+          <div class="col-3">
+
+          </div>
+          <div class="col">
+            <button routerLink="/login" class="btn btn-primary">Cancelar</button>
+          </div>
+        </div>
+      </div>
     </form>
+  </div>
 </div>

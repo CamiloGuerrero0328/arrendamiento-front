@@ -13,6 +13,8 @@ import { ListaDocumentosClienteComponent } from './component/lista-documentos-cl
 import { ListaClienteArrendatarioComponent } from './component/lista-cliente-arrendatario/lista-cliente-arrendatario.component';
 import { RegistroClienteComponent } from './component/registro-cliente/registro-cliente.component';
 import { RegistroAbogadoComponent } from './component/registro-abogado/registro-abogado.component';
+import { ListaInmuebleFullComponent } from './component/lista-inmueble-full/lista-inmueble-full.component';
+import { AplicarInmuebleComponent } from './component/aplicar-inmueble/aplicar-inmueble.component';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
@@ -32,7 +34,9 @@ const routes: Routes = [
     {path:'agregar-inmueble', component:AgregarImbuebleComponent},
     {path:'lista-inmueble', component:ListaInmuebleComponent},
     {path:'documentos', component:DocumentosComponent},
-    {path:'registro-cliente', component:RegistroClienteComponent}
+    {path:'registro-cliente', component:RegistroClienteComponent},
+    {path:'lista-inmueble-full/:id', component:ListaInmuebleFullComponent},
+    {path:'aplicar-inmueble/:id', component:AplicarInmuebleComponent}
   ]},
   
 ];
