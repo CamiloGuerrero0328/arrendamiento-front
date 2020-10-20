@@ -1,0 +1,36 @@
+<h1 id="liscue">Lista Inmuebles Aplicados</h1>
+
+<div *ngIf="showMsg">
+  {{msg}}
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <td>ID</td>
+      <td>NOMBRE PROCESO</td>
+      <td>ESTADO</td>
+      <td>FECHA APLICADO</td>
+      <td>ID ABOGADO</td>
+      <td>ID CLIENTE</td>
+      <td>ID INMUEBLE</td>
+      <td>OPCIONES</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Proceso of listaProceso">
+      <td>{{Proceso.idProceso}}</td>
+      <td>{{Proceso.nombreProceso}}</td>
+      <td>{{Proceso.estado}}</td>
+      <td>{{Proceso.fechaProceso}}</td>
+      <td>{{Proceso.idAbogado_Abogado}}</td>
+      <td>{{Proceso.idCliente_Cliente}}</td>
+      <td>{{Proceso.idInmueble_Inmueble}}</td>
+      <td>
+        <button type="button" class="btn btn-primary">Ver Inmueble</button>
+        <button type="button" class="btn btn-primary">Ver Cliente</button>
+        <button type="button" class="btn btn-success">Aplicar</button>
+      </td>
+    </tr>
+  </tbody>
+  </table>
