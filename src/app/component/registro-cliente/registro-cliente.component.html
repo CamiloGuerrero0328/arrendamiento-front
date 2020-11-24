@@ -1,54 +1,67 @@
 <div id="title" class="mx-auto text-center">
-    <h1 id="titulo">Registro</h1>
+  <h1 id="titulo">Registro</h1>
 </div>
 
-<div id="login" class="mx-auto">
-    <form>
-          <div class="form-group">
-            <input [(ngModel)]="nombre" placeholder="NOMBRE COMPLETO" name="nombre" id="email" type="email" class="form-control" required>
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div id="login" class="mx-auto">
+      <form>
+        <div class="form-group">
+          <input [(ngModel)]="nombre" placeholder="NOMBRE COMPLETO" name="nombre" id="email" type="email"
+            class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="apellido" placeholder="APELLIDO COMPLETO" name="apellido" id="password" type="text"
+            class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="telefono" placeholder="TELEFONO" name="telefono" id="password" type="text"
+            class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <select [(ngModel)]="tipoDocumento" class="form-control" name="tipoUsuario" required>
+            <option disabled selected>Tipo Documento</option>
+            <option value="1">Cedula Ciudadania</option>
+            <option value="2">Tarjeta Identidad</option>
+            <option value="3">Pasaporte</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="documento" placeholder="DOCUMENTO" name="documento" id="password" type="text"
+            class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <select [(ngModel)]="tipoCliente" class="form-control" name="tipoCliente" required>
+            <option disabled selected>Tipo Cliente</option>
+            <option value="1">Arrendatario</option>
+            <option value="2">Arrendador</option>
+          </select>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-primary" (click)="registerCliente()">Registrar</button>
             </div>
-        
-          <div class="form-group">
-            <input [(ngModel)]="apellido" placeholder="APELLIDO COMPLETO" name="apellido" id="password" type="text" class="form-control" required>
-          </div>
+            <div class="col-3">
 
-          <div class="form-group">
-            <input [(ngModel)]="telefono" placeholder="TELEFONO" name="telefono" id="password" type="text" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <select [(ngModel)]="tipoDocumento" class="form-control" name="tipoUsuario" required>
-              <option disabled selected>Tipo Documento</option>
-              <option value="1">Cedula Ciudadania</option>
-              <option value="2">Tarjeta Identidad</option>
-              <option value="3">Pasaporte</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <input [(ngModel)]="documento" placeholder="DOCUMENTO" name="documento" id="password" type="text" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <select [(ngModel)]="tipoCliente" class="form-control" name="tipoCliente" required>
-              <option disabled selected>Tipo Cliente</option>
-              <option value="1">Arrendatario</option>
-              <option value="2">Arrendador</option>
-            </select>
-          </div>
-
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <button class="btn btn-primary" (click)="registerCliente()">Registrar</button>
-              </div>
-              <div class="col-3">
-        
-              </div>
-              <div class="col">
-                <button routerLink="/login" class="btn btn-primary">Cancelar</button>
-              </div>
+            </div>
+            <div class="col">
+              <button routerLink="/login" class="btn btn-primary">Cancelar</button>
             </div>
           </div>
-    </form>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-3">
+
+  </div>
+
 </div>
