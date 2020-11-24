@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbogadoService } from 'src/app/service/abogado.service';
 import { Router } from '@angular/router';
 import { Abogado } from 'src/app/domain/Abogado';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-abogado',
@@ -19,6 +20,8 @@ export class RegistroAbogadoComponent implements OnInit {
   public enable: string;
   public idUsuario: number;
 
+  public idAbogaInmu: number;
+
   constructor(public abogadoService: AbogadoService,
     public route: Router) { }
 
@@ -35,8 +38,16 @@ export class RegistroAbogadoComponent implements OnInit {
     this.abogadoService.save(this.abogado).subscribe(
       (abogado) => {
         console.log(abogado);
+        this.idAbogaInmu = abogado.idAbogado;
+        localStorage.setItem('idAbogado', this.idAbogaInmu.toString());
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro como abogado creado con exito',
+          showConfirmButton: true
+        })
       }, (error) => {
-        console.log("Hay un error" + error.error.message);
+        console.log("Hay un error" + error.error);
       }
     );
   }

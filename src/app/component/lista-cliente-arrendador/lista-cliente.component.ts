@@ -30,11 +30,21 @@ export class ListaClienteComponent implements OnInit {
     this.subFindAll.unsubscribe();
   }
 
+  public findClientInmueble():void {
+
+  }
+
   public findAll(): void {
-    this.subFindAll = this.clienteService.findByTipoCliente(2).subscribe(
+    this.subFindAll = this.clienteService.findAll().subscribe(
       data => { this.listaCliente = data; }
     );
   }
+
+  // public findAll(): void {
+  //   this.subFindAll = this.clienteService.findByTipoCliente(2).subscribe(
+  //     data => { this.listaCliente = data; }
+  //   );
+  // }
 
 
 

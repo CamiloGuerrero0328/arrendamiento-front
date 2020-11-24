@@ -17,7 +17,7 @@ export class ClienteService {
   }
 
   public findById(id:string): Observable<any>{
-    return this.httpClient.get(this.url+'findById/'+id);
+    return this.httpClient.get(this.url+'/findById/'+id);
   }
 
   public findByTipoCliente(id:number): Observable<any>{

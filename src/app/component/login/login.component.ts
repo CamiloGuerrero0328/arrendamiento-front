@@ -3,6 +3,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/domain/Usuario';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -40,11 +41,20 @@ export class LoginComponent implements OnInit {
           console.log(this.idU);
           this.routing();
         },error => {
-          this.msg = error.error.message;
+          this.msg = error.error;
           this.showMsg = true;
         });
+      },error => {
+        this.msg = error.error;
+        this.showMsg = true;
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Credenciales incorrectas',
+          showConfirmButton: true
+        });
       }
-    );
+    )
   }
 
   public routing() {

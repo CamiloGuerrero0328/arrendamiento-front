@@ -15,6 +15,12 @@ import { RegistroClienteComponent } from './component/registro-cliente/registro-
 import { RegistroAbogadoComponent } from './component/registro-abogado/registro-abogado.component';
 import { ListaInmuebleFullComponent } from './component/lista-inmueble-full/lista-inmueble-full.component';
 import { ListaInmueblesAplicadosComponent } from './component/lista-inmuebles-aplicados/lista-inmuebles-aplicados.component';
+import { MostrarInmuebleComponent } from './component/mostrar-inmueble/mostrar-inmueble.component';
+import { MostrarClienteComponent } from './component/mostrar-cliente/mostrar-cliente.component';
+import { ProcesoComponent } from './component/proceso/proceso.component';
+import { ArrendatarioAplicadosComponent } from './component/arrendatario-aplicados/arrendatario-aplicados.component';
+import { ListaInmueblesArrendadorComponent } from './component/lista-inmuebles-arrendador/lista-inmuebles-arrendador.component';
+import { ResponsePaycoComponent } from './component/response-payco/response-payco.component';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
@@ -28,6 +34,9 @@ const routes: Routes = [
     {path:'lista-documentos-cliente/:id', component:ListaDocumentosClienteComponent},
     {path:'registro-abogado', component:RegistroAbogadoComponent},
     {path:'lista-inmuebles-aplicados', component:ListaInmueblesAplicadosComponent},
+    {path:'mostrar-inmueble/:id', component:MostrarInmuebleComponent},
+    {path:'mostrar-cliente/:id', component:MostrarClienteComponent},
+    {path:'proceso/:id', component:ProcesoComponent},
   ]},
 
   {path:'cliente', component:ClienteComponent,
@@ -36,7 +45,10 @@ const routes: Routes = [
     {path:'lista-inmueble', component:ListaInmuebleComponent},
     {path:'documentos', component:DocumentosComponent},
     {path:'registro-cliente', component:RegistroClienteComponent},
-    {path:'lista-inmueble-full/:id', component:ListaInmuebleFullComponent}
+    {path:'lista-inmueble-full/:id', component:ListaInmuebleFullComponent},
+    {path:'arrendatario-aplicados', component:ArrendatarioAplicadosComponent},
+    {path:'lista-inmueble-arrendador', component:ListaInmueblesArrendadorComponent},
+    {path:'response', component:ResponsePaycoComponent},
   ]},
   
 ];

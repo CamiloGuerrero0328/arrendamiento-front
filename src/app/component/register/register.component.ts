@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Usuario } from 'src/app/domain/Usuario';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -37,15 +38,21 @@ export class RegisterComponent implements OnInit {
       this.usuarioService.save(this.usuario).subscribe(
         (usuario)=>{
           console.log(usuario);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Usuario creado con exito',
+            showConfirmButton: true
+          })
         },(error)=>{
-          console.log("Hay un error"+error.error.message);
+          console.log("Hay un error"+error.error);
         }
       );
       this.router.navigate(['/login']);
     })
     .catch(error=>{
       this.showMsg=true;
-      this.msg=error.message;    
+      this.msg=error;    
     });  
   }
 

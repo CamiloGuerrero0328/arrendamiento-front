@@ -7,27 +7,21 @@
 <table class="table table-striped">
   <thead class="thead-dark">
   <tr>
-    <td>ID</td>
     <td>NOMBRE</td>
     <td>APELLIDO</td>
     <td>TELEFONO</td>
-    <td>TIPO DOCUMENTO</td>
     <td>DOCUMENTO</td>
-    <td>USUARIO</td>
     <td>OPCIONES</td>
   </tr>
 </thead>
 <tbody>
   <tr *ngFor="let Cliente of listaCliente">
-    <td>{{Cliente.idCliente}}</td>
     <td>{{Cliente.nombreCliente}}</td>
     <td>{{Cliente.apellidoCliente}}</td>
     <td>{{Cliente.telefonoCliente}}</td>
-    <td>{{Cliente.idTipoDocumento_TipoDocumento}}</td>
     <td>{{Cliente.documento}}</td>
-    <td>{{Cliente.idUsuario_Usuario}}</td>
     <td>
-      <button [routerLink]="[ '../lista-documentos-cliente', Cliente.idCliente ]">Ver Documentos</button>
+      <button [routerLink]="[ '../lista-documentos-cliente', Cliente.idCliente ]" class="btn btn-success">Ver Documentos</button>
     </td>
   </tr>
 </tbody>

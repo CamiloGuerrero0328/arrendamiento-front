@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -25,6 +26,14 @@ import { RegistroClienteComponent } from './component/registro-cliente/registro-
 import { RegistroAbogadoComponent } from './component/registro-abogado/registro-abogado.component';
 import { ListaInmuebleFullComponent } from './component/lista-inmueble-full/lista-inmueble-full.component';
 import { ListaInmueblesAplicadosComponent } from './component/lista-inmuebles-aplicados/lista-inmuebles-aplicados.component';
+import { MostrarInmuebleComponent } from './component/mostrar-inmueble/mostrar-inmueble.component';
+import { MostrarClienteComponent } from './component/mostrar-cliente/mostrar-cliente.component';
+import { ProcesoComponent } from './component/proceso/proceso.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ArrendatarioAplicadosComponent } from './component/arrendatario-aplicados/arrendatario-aplicados.component';
+import { ListaInmueblesArrendadorComponent } from './component/lista-inmuebles-arrendador/lista-inmuebles-arrendador.component';
+import { PipePipe } from './component/pipe.pipe';
+import { ResponsePaycoComponent } from './component/response-payco/response-payco.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +52,14 @@ import { ListaInmueblesAplicadosComponent } from './component/lista-inmuebles-ap
     RegistroClienteComponent,
     RegistroAbogadoComponent,
     ListaInmuebleFullComponent,
-    ListaInmueblesAplicadosComponent
+    ListaInmueblesAplicadosComponent,
+    MostrarInmuebleComponent,
+    MostrarClienteComponent,
+    ProcesoComponent,
+    ArrendatarioAplicadosComponent,
+    ListaInmueblesArrendadorComponent,
+    PipePipe,
+    ResponsePaycoComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +70,8 @@ import { ListaInmueblesAplicadosComponent } from './component/lista-inmuebles-ap
     AngularFireStorageModule,
     NgbModule,
     ModalModule.forRoot(),
+    PdfViewerModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/domain/Cliente';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/service/cliente.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-cliente',
@@ -31,14 +32,22 @@ export class RegistroClienteComponent implements OnInit {
     this.id = Math.floor(Math.random() * 200);
   }
 
+  
+
   public registerCliente(): void {
     this.cliente = new Cliente(this.apellido, this.documento, this.id, this.nombre, this.telefono,
       this.tipoCliente, this.tipoDocumento, this.idUser);
     this.clienteService.save(this.cliente).subscribe(
       (cliente) => {
         this.idClienInmu = cliente.idCliente;
-        localStorage.setItem('idUsuario', this.idClienInmu.toString());
+        localStorage.setItem('idCliente', this.idClienInmu.toString());
         console.log(cliente);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registro como cliente creado con exito',
+          showConfirmButton: true
+        })
       }, (error) => {
         console.log("Hay un error" + error.error.message);
       }

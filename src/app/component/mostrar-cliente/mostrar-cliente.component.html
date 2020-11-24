@@ -1,0 +1,27 @@
+<p>Mostrar cliente apliado</p>
+
+<div class="row justify-content-center">
+    <div class="containerInmueble card">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nombre:</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                [value]="cliente.nombreCliente" disabled>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Apellido:</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" [value]="cliente.apellidoCliente" disabled>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Telefono:</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" [value]="cliente.telefonoCliente" disabled>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Tipo de documento:</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" [value]="cliente.idTipoDocumento_TipoDocumento" disabled>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Documento:</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" [value]="cliente.documento" disabled>
+        </div>
+    </div>
+</div>

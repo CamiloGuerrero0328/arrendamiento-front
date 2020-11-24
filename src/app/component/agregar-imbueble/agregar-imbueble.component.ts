@@ -4,6 +4,7 @@ import { Inmueble } from 'src/app/domain/Inmueble';
 import { Cliente } from 'src/app/domain/Cliente';
 import { InmuebleService } from 'src/app/service/inmueble.service';
 import { ClienteService } from 'src/app/service/cliente.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-imbueble',
@@ -32,9 +33,7 @@ export class AgregarImbuebleComponent implements OnInit {
 
   ngOnInit(): void {
     this.idUser = Number(localStorage.getItem('idUsuario'));
-    
     this.idInmueble = Math.floor(Math.random() * 1000);
-
     this.insertIdCliente();
   }
 
@@ -44,7 +43,7 @@ export class AgregarImbuebleComponent implements OnInit {
         this.idcliente = cliente.idCliente;
         console.log(this.idcliente);
     },(error)=>{
-      console.log("Hay un error"+error.error.message);
+      console.log("Hay un error"+error.error);
     }
     );
   }
@@ -53,9 +52,11 @@ export class AgregarImbuebleComponent implements OnInit {
     this.inmueble = new Inmueble(this.descripcion, this.direccion, this.idInmueble, this.tipoInmueble, this.idcliente);
     this.inmuebleService.save(this.inmueble).subscribe(
       (inmueble)=>{
+        Swal.fire('Inmueble creado con exito');
         console.log(inmueble);
       },(error)=>{
-        console.log("Hay un error"+error.error.message);
+        console.log("Hay un error"+error.error);
+        Swal.fire('Creacion de inmueble fallida');
       }
     );
   }

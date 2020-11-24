@@ -6,6 +6,8 @@ export class Proceso {
         public nombreProceso:string,
         public idAbogado_Abogado:number,
         public idCliente_Cliente:number,
-        public idInmueble_Inmueble:number
+        public idInmueble_Inmueble:number,
+        public info:string,
+        public pagado:boolean,
     ){}
 }

@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { Document } from 'src/app/domain/Document';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
+import { DomSanitizer } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-lista-documentos-cliente',
   templateUrl: './lista-documentos-cliente.component.html',
@@ -13,7 +15,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class ListaDocumentosClienteComponent implements OnInit {
 
   public modalRef: BsModalRef;
-  config = { animated: false };
+  config = { animated: false , class:'modal-xl'};
 
   public listaDocumentos: Document[];
   public subFindAll: Subscription;
@@ -28,7 +30,8 @@ export class ListaDocumentosClienteComponent implements OnInit {
   constructor(public documentService: DocumentService,
     public route: Router,
     public activedRoute: ActivatedRoute,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService,
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     console.log('ngOnInit');
@@ -51,7 +54,8 @@ export class ListaDocumentosClienteComponent implements OnInit {
 
   public ver(url:string, modal: TemplateRef<any>) {
     this.actualUrl = url;
-    this.modalRef = this.modalService.show(modal, this.config);     
+    this.modalRef = this.modalService.show(modal, this.config);  
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.actualUrl);   
     // this.modalService.open(modal);   
   }
 

@@ -1,0 +1,61 @@
+<h1>proceso</h1>
+
+
+<div class="cuadricula">
+    <div class="document" (click)="ver(documentos.rut, modal)">
+        <label for="">Aca va rut</label>
+    </div>
+    <div class="document" (click)="ver(documentos.cartaLaboral, modal)">
+        <label for="">Aca va carta laboral</label>
+    </div>
+    <div class="document" (click)="ver(documentos.solicitudArrendamiento, modal)">
+        <label for="">Aca va solicitud arrendamiento</label>
+    </div>
+    <div class="document" (click)="ver(documentos.cedulaCiudadania, modal)">
+        <label for="">Aca va cedula de ciudadania</label>
+    </div>
+    <div class="document" (click)="ver(documentos.codeudor, modal)">
+        <label for="">Aca va codeudor</label>
+    </div>
+</div>
+
+<h2>Verificar estado</h2>
+<div>
+    <form action="">
+        <label for="">Selecciona el estado del proceso</label>
+        <div class="custom-control custom-radio">
+            <select [(ngModel)]="estado" name="estado" id="estado">
+                <option disabled selected>Selecione estado...</option>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+        </div>
+        <div>
+            <div class="mb-3">
+                <label for="validationTextarea">Obervaciones:</label>
+                <textarea [(ngModel)]="info" name="info" class="form-control" id="validationTextarea"
+                    placeholder="Required example textarea"></textarea>
+                <div class="invalid-feedback">
+                    En caso de ser no activo, especifique porque...
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" (click)="actualizarProceso()">Calificar Estado</button>
+          </div>
+    </form>
+</div>
+
+
+<ng-template #modal>
+    <div class="container-fluid">
+
+        <div class="modal-header">
+            Documentos
+        </div>
+        <div class="modal-body" style="height: 25rem;">
+            <iframe Type="application/pdf" [src]="actualUrl | pipe" [render-text]="true" width="100%" height="100%" frameborder="0"  style="display: block;" ></iframe>
+            <!-- <img style="width: 440px;" [src]="actualUrl"> -->
+        </div>
+    </div>
+</ng-template>

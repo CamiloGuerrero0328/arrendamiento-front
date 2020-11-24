@@ -31,7 +31,7 @@ export class ListaClienteArrendatarioComponent implements OnInit {
   }
 
   public findAll(): void {
-    this.subFindAll = this.clienteService.findByTipoCliente(1).subscribe(
+    this.subFindAll = this.clienteService.findAll().subscribe(
       data => { this.listaCliente = data; }
     );
   }

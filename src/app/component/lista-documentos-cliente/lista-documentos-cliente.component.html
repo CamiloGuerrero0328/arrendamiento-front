@@ -7,26 +7,22 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <td>ID</td>
         <td>CARTA LABORAL</td>
         <td>RUT</td>
         <td>SOLICITUD ARRENDAMIENTO</td>
         <td>CEDULA CIUDADANIA</td>
         <td>CODEUDOR</td>
         <td>FECHA INGRESO DOC</td>
-        <td>ID CLIENTE</td>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let Document of listaDocumentos">
-        <td>{{Document.idDocumentos}} </td>
         <td> <a (click)="ver(Document.cartaLaboral, modal)">Carta Laboral</a></td>
         <td> <a (click)="ver(Document.rut, modal)">Rut</a></td>
         <td> <a (click)="ver(Document.solicitudArrendamiento, modal)">Solicitud Arrendamiento</a></td>
         <td> <a (click)="ver(Document.cedulaCiudadania, modal)">Cedula Ciudadania</a></td>
         <td> <a (click)="ver(Document.codeudor, modal)">Codeudor</a></td>
-        <td>{{Document.fechaIngreso}}</td>
-        <td>{{Document.idCliente_Cliente}}</td>
+        <td>{{Document.fechaIngreso | date}}</td>
       </tr>
     </tbody>
   </table>
@@ -37,11 +33,9 @@
     <div class="modal-header">
       Documentos
     </div>
-    <div class="modal-body">
-      <img style="width: 440px;" [src]="actualUrl">
-    </div>
-    <div>
-      <a [href]="actualUrl.substr(7, actualUrl.length)" download="file.jpeg">Haz Click aqui para descargar</a>
+    <div class="modal-body"  style="height: 35rem;">
+      <!-- <img style="width: 440px;" [src]="actualUrl"> -->
+      <iframe Type="application/pdf" [src]="actualUrl | pipe" [render-text]="true" width="100%" height="100%" frameborder="0"  style="display: block;" ></iframe>
     </div>
   </div>
 </ng-template>

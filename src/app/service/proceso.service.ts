@@ -16,7 +16,11 @@ export class ProcesoService {
   }
 
   public findById(id:number): Observable<any>{
-    return this.httpClient.get(this.url+'findById/'+id);
+    return this.httpClient.get(this.url+'/findById/'+id);
+  }
+
+  public findByIdCliente(id:number): Observable<any>{
+    return this.httpClient.get(this.url+'/findByIdCliente/'+id);
   }
 
   public findAll(): Observable<any>{

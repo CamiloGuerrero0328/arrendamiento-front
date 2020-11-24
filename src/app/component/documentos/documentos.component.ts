@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize, } from 'rxjs/operators';
 import { Document } from 'src/app/domain/Document';
+import { ClienteService } from 'src/app/service/cliente.service';
 import { DocumentService } from 'src/app/service/document.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-documentos',
@@ -20,18 +22,22 @@ export class DocumentosComponent implements OnInit {
   public urlRut:string;
   public urlCarta:string;
   public urlCodeudor:string;
-  public fechaIngreso:Date;
+  public fechaIngreso:Date = new Date();
 
   constructor(public storage:AngularFireStorage,
-              public documentService:DocumentService) { }
+              public documentService:DocumentService,
+              public clientService:ClienteService) { }
 
   ngOnInit(): void {
+    this.idDocumentos = Math.floor(Math.random() * 200);
+    console.log(this.idDocumentos);
+    this.findByIdCliente();
   }
 
   public subirCedula(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}`;
+    const filePath = `documentos/profile_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
@@ -47,7 +53,7 @@ export class DocumentosComponent implements OnInit {
   public subirCodeudor(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}`;
+    const filePath = `documentos/profile_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
@@ -63,7 +69,7 @@ export class DocumentosComponent implements OnInit {
   public subirCarta(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}`;
+    const filePath = `documentos/profile_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
@@ -79,7 +85,7 @@ export class DocumentosComponent implements OnInit {
   public subirRut(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}`;
+    const filePath = `documentos/profile_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
@@ -95,7 +101,7 @@ export class DocumentosComponent implements OnInit {
   public subirSolicitud(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}`;
+    const filePath = `documentos/profile_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
@@ -114,10 +120,24 @@ export class DocumentosComponent implements OnInit {
     this.documentService.save(this.documentos).subscribe(
       (documentos)=>{
         console.log(documentos);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Documentos ingresados con exito',
+          showConfirmButton: true
+        })
       },(error)=>{
-        console.log("Hay un error"+error.error.message);
+        console.log("Hay un error"+error.error);
       }
     );
+  }
+
+  public findByIdCliente(){
+    this.clientService.findClientByIdUser(Number(localStorage.getItem('idUsuario'))).subscribe(
+      (cliente)=>{
+      this.idCliente = cliente.idCliente;
+      console.log(this.idCliente);
+    });
   }
 
 }

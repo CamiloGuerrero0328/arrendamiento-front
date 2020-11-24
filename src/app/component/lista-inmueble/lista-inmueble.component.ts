@@ -7,6 +7,7 @@ import { InmuebleService } from 'src/app/service/inmueble.service';
 import { ProcesoService } from 'src/app/service/proceso.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ClienteService } from 'src/app/service/cliente.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class ListaInmuebleComponent implements OnInit {
   public idCliente:number;
   public idInmueble:number;
   public estado:string = 'false';
+  public info:string;
 
   public listaInmueble: Inmueble[];
   public subFindAll: Subscription;
@@ -85,17 +87,66 @@ export class ListaInmuebleComponent implements OnInit {
   public aplicar(idInmueble:number,modal: TemplateRef<any>){
     this.idInmueble = idInmueble;
     this.modalRef = this.modalService.show(modal, this.config);
+    Swal.fire('Proceso creado con exito');
   }
 
   public save():void{
     this.proceso = new Proceso(this.estado, this.fecha, this.idProceso, this.nombreProceso, 0, 
-      this.idCliente, this.idInmueble);
+      this.idCliente, this.idInmueble, null, false);
     this.procesoService.save(this.proceso).subscribe(
       (proceso)=>{
         console.log(proceso);
+        Swal.fire('Proceso creado con exito');
     },(error)=>{
-      console.log("Hay un error"+error.error.message);
+      console.log("Hay un error"+error.error);
     });
+  }
+
+  public pagar():void{
+
+    
+    const ref = Math.random().toString(36).substring(2).toUpperCase();
+    var handler = ePayco.checkout.configure({
+      key: '1c778aec383303315fc4586bb7b95ee0',
+      test: true
+    })
+
+    const data={
+      //Parametros compra (obligatorio)
+      name: "Pago estudio",
+      description: "Con este pago del estudio, el abogado accedera a realizar el estudio de tus documentos.",
+      invoice: ref,
+      currency: "cop",
+      amount: "60000",
+      tax_base: "0",
+      tax: "0",
+      country: "co",
+      lang: "en",
+
+      //Onpage="false" - Standard="true"
+      external: "false",
+
+
+      //Atributos opcionales
+      extra1: "extra1",
+      extra2: "extra2",
+      extra3: "extra3",
+      // confirmation: "http://secure2.payco.co/prueba_curl.php",
+      response: "https://arrendamiento-pc.web.app/cliente/response",
+
+      //Atributos cliente
+      name_billing: "Andres Perez",
+      address_billing: "Carrera 19 numero 14 91",
+      type_doc_billing: "cc",
+      mobilephone_billing: "3050000000",
+      number_doc_billing: "100000000",
+
+     //atributo deshabilitación metodo de pago
+    //methodsDisable: ["TDC", "PSE","SP","CASH","DP"]
+
+      }
+
+      handler.open(data);
   }
 
   public closeModal(){

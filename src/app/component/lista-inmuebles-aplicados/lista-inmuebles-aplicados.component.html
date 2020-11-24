@@ -11,9 +11,7 @@
       <td>NOMBRE PROCESO</td>
       <td>ESTADO</td>
       <td>FECHA APLICADO</td>
-      <td>ID ABOGADO</td>
-      <td>ID CLIENTE</td>
-      <td>ID INMUEBLE</td>
+      <td>PAGADO</td>
       <td>OPCIONES</td>
     </tr>
   </thead>
@@ -22,14 +20,13 @@
       <td>{{Proceso.idProceso}}</td>
       <td>{{Proceso.nombreProceso}}</td>
       <td>{{Proceso.estado}}</td>
-      <td>{{Proceso.fechaProceso}}</td>
-      <td>{{Proceso.idAbogado_Abogado}}</td>
-      <td>{{Proceso.idCliente_Cliente}}</td>
-      <td>{{Proceso.idInmueble_Inmueble}}</td>
+      <td>{{Proceso.fechaProceso | date}}</td>
+      <td *ngIf="Proceso.pagado===true">Pagado</td>
+      <td *ngIf="Proceso.pagado===false">No pagado</td>
       <td>
-        <button type="button" class="btn btn-primary">Ver Inmueble</button>
-        <button type="button" class="btn btn-primary">Ver Cliente</button>
-        <button type="button" class="btn btn-success">Aplicar</button>
+        <button [routerLink]="[ '../mostrar-inmueble', Proceso.idInmueble_Inmueble ]" type="button" class="btn btn-primary">Ver Inmueble</button>
+        <button [routerLink]="[ '../mostrar-cliente', Proceso.idCliente_Cliente ]" type="button" class="btn btn-primary">Ver Cliente</button>
+        <button [routerLink]="[ '../proceso', Proceso.idProceso ]" type="button" class="btn btn-success">Aplicar</button>
       </td>
     </tr>
   </tbody>

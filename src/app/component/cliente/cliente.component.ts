@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { ClienteService } from 'src/app/service/cliente.service';
 
 @Component({
   selector: 'app-cliente',
@@ -9,9 +10,26 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class ClienteComponent implements OnInit {
 
-  constructor(public router: Router, public autService:AuthService) { }
+  public idUser: number;
+  public mostrarRegistro:boolean = false;
+
+  constructor(public router: Router, public autService:AuthService,public clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.idUser = Number(localStorage.getItem('idUsuario'));
+    this.validateRegister();
+  }
+
+  public validateRegister(): void{
+    this.clienteService.findClientByIdUser(this.idUser).subscribe(
+      (cliente)=>{
+        console.log(cliente);
+        if(cliente === null){
+          this.mostrarRegistro = true;
+        }else{
+          this.mostrarRegistro = false;
+        }
+      });
   }
 
   public singOut():void{

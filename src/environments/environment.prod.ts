@@ -1,5 +1,7 @@
 export const environment = {
   production: true,
+  apiUrl: 'https://arrendamiento-back.herokuapp.com',
+  //apiUrl: 'http://localhost:8080',
   firebaseConfig : {
     apiKey: "AIzaSyBUErSjab_Bt5OWfeX9kRSI4R0zv3_AUYE",
     authDomain: "arrendamiento-pc.firebaseapp.com",

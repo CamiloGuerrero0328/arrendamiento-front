@@ -1,52 +1,19 @@
-<!-- <div id="container"> -->
-
     <div *ngIf="showMsg" class="mx-auto text-center">
       {{msg}}
     </div>
-    
-    <!-- <div id="login" class="mx-auto">
-      <form>
-    
-        <div class="form-group">
-          <input [(ngModel)]="email" placeholder="Correo electrónico" name="email" id="email" type="email" class="form-control" required>
-        </div>
-    
-        <div class="form-group">
-          <input [(ngModel)]="password" placeholder="Contraseña" name="password" id="password" type="password" class="form-control" required>
-        </div>
-
-        <div class="custom-control custom-checkbox mb-3">
-          <input type="checkbox" class="custom-control-input" id="customCheck1">
-          <label class="custom-control-label" for="customCheck1">Remember password</label>
-        </div>
-    
-            <div >
-              <button class="btn btn-primary" (click)="login()">Ingresar</button>
-            
-              <button routerLink="/register" class="btn btn-primary">Registrar</button>
-            </div>
-    
-          
-      </form>
-    </div> -->
 
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <!-- Tabs Titles -->
-    
-        <!-- Icon -->
         <div class="fadeIn first">
           <img src="https://goalamarketing.com/wp-content/uploads/2017/01/logo-inmolive2.png" id="logo" alt="User Icon" />
         </div>
-    
-        <!-- Login Form -->
+
         <form>
           <input [(ngModel)]="email" type="text" id="login" class="fadeIn second" name="login" placeholder="Correo">
           <input [(ngModel)]="password" type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
           <input (click)="login()" type="submit" class="fadeIn fourth" value="Log In">
         </form>
-    
-        <!-- Remind Passowrd -->
+
         <div id="formFooter">
           <a class="underlineHover" href="#">Forgot Password?</a>
           <div>
@@ -57,5 +24,3 @@
     
       </div>
     </div>
-
-    <!-- </div> -->

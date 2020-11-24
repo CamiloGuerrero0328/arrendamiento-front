@@ -1,0 +1,31 @@
+<h1 class="my-4" id="liscue">Lista Inmuebles Aplicados por Cliente</h1>
+
+<div *ngIf="showMsg">
+  {{msg}}
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <td>NOMBRE PROCESO</td>
+      <td>FECHA APLICADO</td>
+      <td>INFO</td>
+      <td>ESTADO</td>
+      <td>OPCIONES</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Proceso of listaProceso">
+      <td>{{Proceso.nombreProceso}}</td>
+      <td>{{Proceso.fechaProceso | date}}</td>
+      <td>{{Proceso.info}}</td>
+      <td *ngIf="Proceso.pagado===true">Pagado</td>
+      <td *ngIf="Proceso.pagado===false">No pagado</td>
+      <td>
+        <button [routerLink]="[ '../proceso', Proceso.idCliente_Cliente ]" type="button" class="btn btn-success">Ver estado</button>
+        <button class="btn btn-secondary" (click)="pagar(Proceso.idProceso)">Pagar</button>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
