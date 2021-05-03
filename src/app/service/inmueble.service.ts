@@ -26,6 +26,10 @@ export class InmuebleService {
   public findByIdCliente(id:number): Observable<any>{
     return this.httpClient.get(this.url+'/findByIdCliente/'+id);
   }
+
+  public findInmueblesAplicados(id:number): Observable<any>{
+    return this.httpClient.get(this.url+'/findInmueblesAplicados/'+id);
+  }
   
   public findAll(): Observable<any>{
     return this.httpClient.get(this.url + '/findAll');

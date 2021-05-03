@@ -24,6 +24,12 @@ export class DocumentosComponent implements OnInit {
   public urlCodeudor:string;
   public fechaIngreso:Date = new Date();
 
+  public subidoCedula: boolean=false;
+  public subidoCodeudor: boolean=false;
+  public subidoCarta: boolean=false;
+  public subidoRut: boolean=false;
+  public subidoSolicitud: boolean=false;
+
   constructor(public storage:AngularFireStorage,
               public documentService:DocumentService,
               public clientService:ClienteService) { }
@@ -45,6 +51,8 @@ export class DocumentosComponent implements OnInit {
         (url)=>{
           console.log(url);
           this.urlCedula=url;
+          Swal.fire('Cedula subida con exito');
+          this.subidoCedula = true;
         }
       );
     })).subscribe();
@@ -61,6 +69,8 @@ export class DocumentosComponent implements OnInit {
         (url)=>{
           console.log(url);
           this.urlCodeudor=url;
+          Swal.fire('Codeudor subido con exito');
+          this.subidoCodeudor = true;
         }
       );
     })).subscribe();
@@ -77,6 +87,8 @@ export class DocumentosComponent implements OnInit {
         (url)=>{
           console.log(url);
           this.urlCarta=url;
+          Swal.fire('Carta subida con exito');
+          this.subidoCarta = true;
         }
       );
     })).subscribe();
@@ -93,6 +105,8 @@ export class DocumentosComponent implements OnInit {
         (url)=>{
           console.log(url);
           this.urlRut=url;
+          Swal.fire('Rut subido con exito');
+          this.subidoRut = true;
         }
       );
     })).subscribe();
@@ -109,6 +123,8 @@ export class DocumentosComponent implements OnInit {
         (url)=>{
           console.log(url);
           this.ulrSolicitud=url;
+          Swal.fire('Solicitud subida con exito');
+          this.subidoSolicitud = true;
         }
       );
     })).subscribe();

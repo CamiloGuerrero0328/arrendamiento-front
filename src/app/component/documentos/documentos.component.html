@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col">
                 <div class="custom-file mb-3">
-                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCarta($event)' required>
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCarta($event)' required [disabled]="subidoCarta">
                     <label class="custom-file-label" for="validatedCustomFile">Carta Laboral</label>
                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col">
                 <div class="custom-file mb-3">
-                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirRut($event)' required>
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirRut($event)' required [disabled]="subidoRut">
                     <label class="custom-file-label" for="validatedCustomFile">Rut</label>
                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>
@@ -31,7 +31,7 @@
           <div class="row">
             <div class="col">
                 <div class="custom-file mb-3">
-                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCedula($event)' required>
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCedula($event)' required [disabled]="subidoCedula">
                     <label class="custom-file-label" for="validatedCustomFile">Cedula</label>
                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>
@@ -41,7 +41,7 @@
           <div class="row">
             <div class="col">
                 <div class="custom-file mb-3">
-                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirSolicitud($event)' required>
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirSolicitud($event)' required [disabled]="subidoSolicitud">
                     <label class="custom-file-label" for="validatedCustomFile">Solicitud Arrendamiento</label>
                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>
@@ -51,7 +51,7 @@
           <div class="row">
             <div class="col">
                 <div class="custom-file mb-3">
-                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCodeudor($event)' required>
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirCodeudor($event)' required [disabled]="subidoCodeudor">
                     <label class="custom-file-label" for="validatedCustomFile">Cedula Codeudor</label>
                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>

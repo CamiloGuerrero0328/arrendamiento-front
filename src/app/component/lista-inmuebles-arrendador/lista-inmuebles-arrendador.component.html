@@ -19,8 +19,68 @@
       <td>{{Inmueble.direccion}}</td>
       <td>{{Inmueble.descripcion}}</td>
       <td>
+        <button class="btn btn-primary" [routerLink]="[ '../editar-inmueble', Inmueble.idInmueble ]">Editar</button>
+        <button class="btn btn-primary" (click)="ver(Inmueble.idInmueble, modal)">Ver reporte</button>
         <button class="btn btn-danger" (click)="delete(Inmueble.idInmueble)" >Eliminar</button>
       </td>
     </tr>
   </tbody>
   </table>
+
+  <!-- <ng-template #modal>
+    <div class="container-fluid">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Reporte para este inmueble</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Descripcion:</label>
+              <textarea [(ngModel)]="report.descripcion" name="descripcion" class="form-control" id="message-text" placeholder="Reportes..."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ng-template> -->
+
+  <ng-template #modal>
+    <div class="container-fluid">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Reporte para este inmueble</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+          <div class="modal-body">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <td>DESCRIPCION</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let report of report">
+                <td>{{report.descripcion}}</td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ng-template>

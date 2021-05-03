@@ -16,7 +16,11 @@ export class AbogadoService {
   }
 
   public findById(id:string): Observable<any>{
-    return this.httpClient.get(this.url+'findById/'+id);
+    return this.httpClient.get(this.url+'/findById/'+id);
+  }
+
+  public findAbogadoByIdUser(id:number): Observable<any>{
+    return this.httpClient.get(this.url+'/findAbogadoByIdUser/'+id);
   }
   
   public findAll(): Observable<any>{

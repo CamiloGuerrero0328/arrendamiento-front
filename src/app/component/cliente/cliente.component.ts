@@ -12,11 +12,15 @@ export class ClienteComponent implements OnInit {
 
   public idUser: number;
   public mostrarRegistro:boolean = false;
+  public globalEmailMostrar:string;
 
-  constructor(public router: Router, public autService:AuthService,public clienteService: ClienteService) { }
+  constructor(public router: Router, 
+              public autService:AuthService,
+              public clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.idUser = Number(localStorage.getItem('idUsuario'));
+    this.globalEmailMostrar = localStorage.getItem('email');
     this.validateRegister();
   }
 

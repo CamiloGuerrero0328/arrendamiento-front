@@ -34,6 +34,9 @@ import { ArrendatarioAplicadosComponent } from './component/arrendatario-aplicad
 import { ListaInmueblesArrendadorComponent } from './component/lista-inmuebles-arrendador/lista-inmuebles-arrendador.component';
 import { PipePipe } from './component/pipe.pipe';
 import { ResponsePaycoComponent } from './component/response-payco/response-payco.component';
+import { TarjetaInmuebleComponent } from './component/tarjeta-inmueble/tarjeta-inmueble.component';
+import { EditarInmuebleComponent } from './component/editar-inmueble/editar-inmueble.component';
+import { InmuebleAplicadoComponent } from './component/inmueble-aplicado/inmueble-aplicado.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,9 @@ import { ResponsePaycoComponent } from './component/response-payco/response-payc
     ListaInmueblesArrendadorComponent,
     PipePipe,
     ResponsePaycoComponent,
+    TarjetaInmuebleComponent,
+    EditarInmuebleComponent,
+    InmuebleAplicadoComponent,
   ],
   imports: [
     BrowserModule,

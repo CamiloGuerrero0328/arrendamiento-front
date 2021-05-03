@@ -28,7 +28,7 @@ export class ProcesoComponent implements OnInit {
   public documentos: Document;
   public proceso:Proceso;
 
-  public estado:string;
+  public estado:boolean;
   public fecha:Date;
   public idProceso:number;
   public nombreProceso:string;

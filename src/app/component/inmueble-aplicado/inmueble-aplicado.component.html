@@ -1,0 +1,49 @@
+<h1 class="my-4" id="liscue">Inmueble Aplicado</h1>
+
+<table class="table table-striped" id="example">
+    <thead class="thead-dark">
+    <tr>
+      <td>TIPO INMUEBLE</td>
+      <td>DIRECCION</td>
+      <td>DESCRIPCION</td>
+      <td>OPCIONES</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Inmueble of listaInmueble">
+      <td>{{Inmueble.tipoInmueble}}</td>
+      <td>{{Inmueble.direccion}}</td>
+      <td>{{Inmueble.descripcion}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="report(Inmueble.idInmueble, modal)">Reporte</button>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+
+  <ng-template #modal>
+    <div class="container-fluid">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Reporte para este inmueble</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Descripcion:</label>
+              <textarea [(ngModel)]="descripcion" name="descripcion" class="form-control" id="message-text" placeholder="Daños, Reparaciones, Quejas, ..."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="crear()">Crear reporte</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ng-template>

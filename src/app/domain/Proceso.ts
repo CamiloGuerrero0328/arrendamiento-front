@@ -1,6 +1,6 @@
 export class Proceso {
     constructor(
-        public estado:string,
+        public estado:boolean,
         public fechaProceso:Date,
         public idProceso:number,
         public nombreProceso:string,

@@ -260,3 +260,8 @@ html {
   #icon {
     width:60%;
   }
+
+.img{
+  object-fit: cover;
+  width: 250px;
+}

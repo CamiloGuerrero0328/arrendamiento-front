@@ -91,7 +91,7 @@ export class ListaInmuebleComponent implements OnInit {
   }
 
   public save():void{
-    this.proceso = new Proceso(this.estado, this.fecha, this.idProceso, this.nombreProceso, 0, 
+    this.proceso = new Proceso(false, this.fecha, this.idProceso, this.nombreProceso, 0, 
       this.idCliente, this.idInmueble, null, false);
     this.procesoService.save(this.proceso).subscribe(
       (proceso)=>{

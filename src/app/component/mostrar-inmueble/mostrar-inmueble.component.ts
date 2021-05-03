@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class MostrarInmuebleComponent implements OnInit {
 
-  public inmueble:Inmueble = new Inmueble('', '', 0, '', 0);
+  public inmueble:Inmueble = new Inmueble('', '', '', 0, '', 0);
 
   public subFindAll: Subscription;
 

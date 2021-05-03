@@ -4,7 +4,7 @@
   {{msg}}
 </div>
 
-<table class="table table-striped" id="example">
+<!-- <table class="table table-striped" id="example">
   <thead class="thead-dark">
   <tr>
     <td>ID</td>
@@ -24,7 +24,13 @@
     </td>
   </tr>
 </tbody>
-</table>
+</table> -->
+
+<div class="files-box">
+  <div *ngFor="let inmueble of listaInmueble">
+    <app-tarjeta-inmueble [inmueble]="inmueble" ></app-tarjeta-inmueble>
+  </div>
+</div>
 
 <ng-template #modal>
   <div class="container-fluid">

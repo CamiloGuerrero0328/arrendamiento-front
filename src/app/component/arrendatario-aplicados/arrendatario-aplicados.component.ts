@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ProcesoService } from 'src/app/service/proceso.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Proceso } from 'src/app/domain/Proceso';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Cliente } from 'src/app/domain/Cliente';
+import { Inmueble } from 'src/app/domain/Inmueble';
+import { InmuebleService } from 'src/app/service/inmueble.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-arrendatario-aplicados',
@@ -13,10 +16,16 @@ import { Cliente } from 'src/app/domain/Cliente';
 })
 export class ArrendatarioAplicadosComponent implements OnInit {
 
+  public modalRef: BsModalRef;
+  config = { animated: false };
+
   public cliente:Cliente;
+  public inmueble:Inmueble;
+  public proceso:Proceso;
 
   public listaProceso: Proceso[];
   public subFindAll: Subscription;
+  public idInmueble:number;
 
   public showMsg: boolean = false;
   public msg: string;
@@ -24,18 +33,37 @@ export class ArrendatarioAplicadosComponent implements OnInit {
   public idUser:number;
   public idcliente:number;
 
-  constructor(public procesoService:ProcesoService,
+  constructor(public inmuebleService: InmuebleService,
+              public procesoService:ProcesoService,
               public route:Router,
-              public clienteService:ClienteService) { }
+              public activedRoute: ActivatedRoute,
+              public clienteService:ClienteService,
+              private modalService: BsModalService,) { }
 
   ngOnInit(): void {
     this.idUser = Number(localStorage.getItem('idUsuario'));
+    this.inmueble = new Inmueble("", "", "", 0, "", 0);
     this.insertIdCliente();
   }
 
   ngOnDestroy(): void {
     console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
+  }
+
+  public findByIdInmueble(idInmueble_Inmueble:number):void{
+    this.inmuebleService.findByIdInmueble(idInmueble_Inmueble).subscribe(
+      (inmueble) => {
+        this.inmueble = inmueble[0];
+        console.log(this.inmueble);
+      }, error => {
+        this.showMsg = true;
+        this.msg = error.error.message;
+        console.log("Error");
+      }, () => {
+        console.log("Complete");
+      }
+    );
   }
 
   public insertIdCliente():void{
@@ -48,6 +76,12 @@ export class ArrendatarioAplicadosComponent implements OnInit {
       console.log("Hay un error"+error.error.message);
     }
     );
+  }
+
+  public ver(idInmueble:number,modal: TemplateRef<any>){
+    this.idInmueble = idInmueble;
+    this.findByIdInmueble(idInmueble);
+    this.modalRef = this.modalService.show(modal, this.config);
   }
 
   public procesoCliente(): void {
@@ -103,6 +137,10 @@ export class ArrendatarioAplicadosComponent implements OnInit {
       }
 
       handler.open(data);
+  }
+
+  public closeModal(){
+    this.modalRef.hide();
   }
 
 }

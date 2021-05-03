@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:9090',
+  //apiUrl: 'http://localhost:8080',
   firebaseConfig : {
     apiKey: "AIzaSyBUErSjab_Bt5OWfeX9kRSI4R0zv3_AUYE",
     authDomain: "arrendamiento-pc.firebaseapp.com",

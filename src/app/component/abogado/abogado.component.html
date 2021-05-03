@@ -1,5 +1,10 @@
-<h3 class="bg-dark mb-0 h1 pl-4" style="color: antiquewhite;">U-Rent</h3>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="row justify-content-end bg-dark mb-0 pl-4 mx-1">
+  <h6 style="color: antiquewhite;">
+    {{globalEmailMostrar}}
+  </h6>
+</div>
+<h3 class="bg-dark mb-0 h1 pl-4 mx-1" style="color: antiquewhite;">U-Rent</h3>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-1">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,7 +23,7 @@
             class="sr-only">(current)</span></a>
       </li>
 
-      <li class="nav-item">
+      <li *ngIf="mostrarRegistro"  class="nav-item">
         <a class="nav-link" routerLink="./registro-abogado" href="#">Registrarse como Abogado<span
             class="sr-only">(current)</span></a>
       </li>

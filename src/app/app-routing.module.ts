@@ -21,6 +21,8 @@ import { ProcesoComponent } from './component/proceso/proceso.component';
 import { ArrendatarioAplicadosComponent } from './component/arrendatario-aplicados/arrendatario-aplicados.component';
 import { ListaInmueblesArrendadorComponent } from './component/lista-inmuebles-arrendador/lista-inmuebles-arrendador.component';
 import { ResponsePaycoComponent } from './component/response-payco/response-payco.component';
+import { EditarInmuebleComponent } from './component/editar-inmueble/editar-inmueble.component';
+import { InmuebleAplicadoComponent } from './component/inmueble-aplicado/inmueble-aplicado.component';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
@@ -49,6 +51,8 @@ const routes: Routes = [
     {path:'arrendatario-aplicados', component:ArrendatarioAplicadosComponent},
     {path:'lista-inmueble-arrendador', component:ListaInmueblesArrendadorComponent},
     {path:'response', component:ResponsePaycoComponent},
+    {path:'editar-inmueble/:id', component:EditarInmuebleComponent},
+    {path:'inmueble-aplicado', component:InmuebleAplicadoComponent},
   ]},
   
 ];

@@ -1,4 +1,4 @@
-<h1 class="my-4" id="liscue">Lista Inmuebles Aplicados por Cliente</h1>
+<h1 class="my-4" id="liscue">Lista Inmuebles Aplicados</h1>
 
 <div *ngIf="showMsg">
   {{msg}}
@@ -9,8 +9,9 @@
     <tr>
       <td>NOMBRE PROCESO</td>
       <td>FECHA APLICADO</td>
+      <TD>ESTADO ESTUDIO</TD>
       <td>INFO</td>
-      <td>ESTADO</td>
+      <td>ESTADO PAGADO</td>
       <td>OPCIONES</td>
     </tr>
   </thead>
@@ -18,14 +19,60 @@
     <tr *ngFor="let Proceso of listaProceso">
       <td>{{Proceso.nombreProceso}}</td>
       <td>{{Proceso.fechaProceso | date}}</td>
+      <td *ngIf="Proceso.estado===true">Aprobado</td>
+      <td *ngIf="Proceso.estado===false">No aprobado</td>
       <td>{{Proceso.info}}</td>
       <td *ngIf="Proceso.pagado===true">Pagado</td>
       <td *ngIf="Proceso.pagado===false">No pagado</td>
       <td>
-        <button [routerLink]="[ '../proceso', Proceso.idCliente_Cliente ]" type="button" class="btn btn-success">Ver estado</button>
-        <button class="btn btn-secondary" (click)="pagar(Proceso.idProceso)">Pagar</button>
+        <button class="btn btn-success" (click)="pagar(Proceso.idProceso)">Pagar</button>
+        <button class="btn btn-primary" (click)="ver(Proceso.idInmueble_Inmueble, modal)">Ver Inmueble</button>
       </td>
     </tr>
   </tbody>
   </table>
+
+  <ng-template #modal>
+    <div class="container-fluid">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Inmueble seleccionado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Tipo Inmueble:</label>
+              <input [(ngModel)]="inmueble.tipoInmueble" name="tipoInmueble" type="text" class="form-control" id="recipient-name" disabled>
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Imagen:</label>
+                <input type="text" class="form-control" id="recipient-name" disabled>
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Direccion:</label>
+                <input [(ngModel)]="inmueble.direccion" name="direccion" type="text" class="form-control" id="recipient-name" disabled>
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Descripcion:</label>
+                <input [(ngModel)]="inmueble.descripcion" name="descripcion" type="text" class="form-control" id="recipient-name" disabled>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ng-template>
+
+  <script>
+    $(document).ready(function() {
+      $('#example').DataTable();
+    } );
+  </script>
 

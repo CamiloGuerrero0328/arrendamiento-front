@@ -1,0 +1,39 @@
+<div class="mx-auto text-center">
+    <h1 id="titulo">Editar Inmueble</h1>
+    </div>
+    
+    <div *ngIf="showMsg">
+        {{msg}}
+      </div>
+      
+      <div id="login" class="mx-auto">
+        <form>
+          <div class="row">
+            <div class="col">
+              <label for="exampleInputEmail1">Direccion</label>
+              <input [(ngModel)]="inmueble.direccion"  #direccion name="direccion" type="text" class="form-control" id="clieId"><br/>
+            </div>
+            <div class="col">
+              <label for="exampleInputPassword2">Descripcion</label>
+              <input [(ngModel)]="inmueble.descripcion"      #descripcion   name="descripcion" type="text"  class="form-control" id="name"><br/>
+            </div>
+          </div>
+      
+    
+      
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <button mat-raised-button (click)="update()" style="margin-right:5px;">Actualizar</button>
+              </div>
+              <div class="col-3">
+      
+              </div>
+              <div class="col">
+                <button mat-raised-button routerLink="../../lista-inmueble-arrendador" style="margin-right:5px;">Cancel</button>
+              </div>
+      
+            </div>
+          </div>
+        </form>
+      </div>

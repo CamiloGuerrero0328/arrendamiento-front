@@ -33,6 +33,16 @@
 
       <div class="row">
         <div class="col">
+            <div class="custom-file mb-3">
+                <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirImagen($event)' required>
+                <label class="custom-file-label" for="validatedCustomFile">Imagen inmueble</label>
+                <div class="invalid-feedback">Example invalid custom file feedback</div>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
           <label for="exampleInputPassword4">Descripcion</label>
           <input [(ngModel)]="descripcion" #version name="descripcion" placeholder="Descripcion" type="text"
             id="descripcion" class="form-control"><br />
