@@ -23,6 +23,13 @@ import { ListaInmueblesArrendadorComponent } from './component/lista-inmuebles-a
 import { ResponsePaycoComponent } from './component/response-payco/response-payco.component';
 import { EditarInmuebleComponent } from './component/editar-inmueble/editar-inmueble.component';
 import { InmuebleAplicadoComponent } from './component/inmueble-aplicado/inmueble-aplicado.component';
+import { ResponseMesComponent } from './component/response-mes/response-mes.component';
+import { AdministradorComponent } from './component/administrador/administrador.component';
+import { ClientesRegistradosComponent } from './component/clientes-registrados/clientes-registrados.component';
+import { AbogadosRegistradosComponent } from './component/abogados-registrados/abogados-registrados.component';
+import { InmuebleRegistradosComponent } from './component/inmueble-registrados/inmueble-registrados.component';
+import { MiPerfilComponent } from './component/mi-perfil/mi-perfil.component';
+import { EditarDocumentosComponent } from './component/editar-documentos/editar-documentos.component';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
@@ -51,9 +58,20 @@ const routes: Routes = [
     {path:'arrendatario-aplicados', component:ArrendatarioAplicadosComponent},
     {path:'lista-inmueble-arrendador', component:ListaInmueblesArrendadorComponent},
     {path:'response', component:ResponsePaycoComponent},
+    {path:'responseMes', component:ResponseMesComponent},
     {path:'editar-inmueble/:id', component:EditarInmuebleComponent},
     {path:'inmueble-aplicado', component:InmuebleAplicadoComponent},
+    {path:'mi-perfil', component:MiPerfilComponent},
+    {path:'editar-documentos/:id', component:EditarDocumentosComponent}
   ]},
+
+  {path:'administrador', component:AdministradorComponent,
+  children: [
+    {path:'cliente-registrado', component:ClientesRegistradosComponent},
+    {path:'abogado-registrado', component:AbogadosRegistradosComponent},
+    {path:'inmueble-registrado', component:InmuebleRegistradosComponent},
+  ]
+},
   
 ];
 

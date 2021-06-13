@@ -16,9 +16,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ProcesoComponent implements OnInit {
 
   public modalRef: BsModalRef;
-  config = { animated: false , class:'modal-xl'};
+  config = { animated: false, class: 'modal-xl' };
 
-  public actualUrl:string;
+  public actualUrl: string;
 
   public subFindAll: Subscription;
 
@@ -26,25 +26,26 @@ export class ProcesoComponent implements OnInit {
   public msg: string;
 
   public documentos: Document;
-  public proceso:Proceso;
+  public proceso: Proceso;
 
-  public estado:boolean;
-  public fecha:Date;
-  public idProceso:number;
-  public nombreProceso:string;
-  public idAbogado:number;
-  public idInmueble:number;
-  public idCliete:number;
-  public info:string;
+  public estado: boolean;
+  public fecha: Date;
+  public idProceso: number;
+  public nombreProceso: string;
+  public idAbogado: number;
+  public idInmueble: number;
+  public idCliete: number;
+  public info: string;
 
   constructor(public procesoService: ProcesoService,
-    public documentService:DocumentService,
+    public documentService: DocumentService,
     public route: Router,
     public activedRoute: ActivatedRoute,
     private modalService: BsModalService,
     private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
+    this.idAbogado = Number(localStorage.getItem('idAboga'));
     this.findByIdProceso();
   }
 
@@ -58,23 +59,23 @@ export class ProcesoComponent implements OnInit {
     const id = params.id;
     console.log(id);
     this.subFindAll = this.documentService.findByIdCliente(this.idCliete).subscribe(
-      data => {this.documentos = data[0];
-        console.log(this.documentos);},
+      data => {
+        this.documentos = data[0];
+      },
       error => this.msg = error.error.message
     );
   }
 
-  public findByIdProceso():void{
+  public findByIdProceso(): void {
     const params = this.activedRoute.params[`_value`];
     const id = params.id;
     this.subFindAll = this.procesoService.findById(id).subscribe(
-      (proceso)=>{
+      (proceso) => {
         this.proceso = proceso;
         this.idCliete = proceso.idCliente_Cliente;
-        console.log(this.proceso);
         this.mostrarDocumentos();
-      },(error)=>{
-        console.log("Hay un error"+error.error.message);
+      }, (error) => {
+        console.log("Hay un error" + error.error.message);
       }
     );
   }
@@ -82,9 +83,9 @@ export class ProcesoComponent implements OnInit {
   public actualizarProceso(): void {
     this.proceso.estado = this.estado;
     this.proceso.info = this.info;
+    this.proceso.idAbogado_Abogado = this.idAbogado;
     this.procesoService.update(this.proceso).subscribe(
       (proceso) => {
-        console.log(proceso);
         this.route.navigateByUrl('abogado/lista-inmuebles-aplicados');
       }, (error) => {
         console.log("Hay un error" + error.error.message);
@@ -92,11 +93,9 @@ export class ProcesoComponent implements OnInit {
     );
   }
 
-  public ver(url:string, modal: TemplateRef<any>) {
+  public ver(url: string, modal: TemplateRef<any>) {
     this.actualUrl = url;
-    console.log(url);
-    console.log(this.actualUrl);
-    this.modalRef = this.modalService.show(modal, this.config);     
+    this.modalRef = this.modalService.show(modal, this.config);
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.actualUrl);
     // this.modalService.open(modal);   
   }

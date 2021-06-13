@@ -11,16 +11,16 @@ import { Subscription } from 'rxjs';
 })
 export class MostrarInmuebleComponent implements OnInit {
 
-  public inmueble:Inmueble = new Inmueble('', '', '', 0, '', 0);
+  public inmueble: Inmueble = new Inmueble('', '', '', 0, '', 0, 0);
 
   public subFindAll: Subscription;
 
   public showMsg: boolean = false;
   public msg: string;
 
-  constructor(public inmuebleService:InmuebleService,
-              public route: Router,
-              public activedRoute: ActivatedRoute) { }
+  constructor(public inmuebleService: InmuebleService,
+    public route: Router,
+    public activedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.mostrarinmueble();
@@ -31,12 +31,13 @@ export class MostrarInmuebleComponent implements OnInit {
     this.subFindAll.unsubscribe();
   }
 
-  public mostrarinmueble():void {
+  public mostrarinmueble(): void {
     const params = this.activedRoute.params[`_value`];
     const id = params.id;
     this.subFindAll = this.inmuebleService.findById(id).subscribe(
-      data => {this.inmueble = data;
-      console.log(data);},
+      data => {
+        this.inmueble = data;
+      },
       error => this.msg = error.error.message
     );
   }

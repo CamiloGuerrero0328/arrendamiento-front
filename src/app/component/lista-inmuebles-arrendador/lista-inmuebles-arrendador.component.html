@@ -20,8 +20,8 @@
       <td>{{Inmueble.descripcion}}</td>
       <td>
         <button class="btn btn-primary" [routerLink]="[ '../editar-inmueble', Inmueble.idInmueble ]">Editar</button>
-        <button class="btn btn-primary" (click)="ver(Inmueble.idInmueble, modal)">Ver reporte</button>
-        <button class="btn btn-danger" (click)="delete(Inmueble.idInmueble)" >Eliminar</button>
+        <button class="btn btn-primary" style="margin-left: 5px;" (click)="ver(Inmueble.idInmueble, modal)">Ver reporte</button>
+        <button class="btn btn-danger" style="margin-left: 5px;" (click)="delete(Inmueble.idInmueble)" >Eliminar</button>
       </td>
     </tr>
   </tbody>

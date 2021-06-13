@@ -24,12 +24,10 @@ export class ListaInmuebleFullComponent implements OnInit {
               public activedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.findById();
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
   }
 

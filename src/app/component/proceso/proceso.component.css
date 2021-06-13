@@ -1,9 +1,9 @@
 .cuadricula {
     display: grid;
     align-content: start;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-rows: minmax(auto, auto);
-    grid-gap: 10px;
+    grid-gap: 30px;
     background-color: #f7f7f7;
     width: 100%;
     height: 10rem;
@@ -11,10 +11,10 @@
   }
 
   .document {
-    padding: 10px;
+    padding: 30px;
     background-color: white;
     border: 2px solid #11bb25;
     cursor: pointer;
-    max-height: 6em;
+    max-height: 250px;
     overflow: hidden;
   }

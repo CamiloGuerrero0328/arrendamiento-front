@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/domain/Usuario';
 import Swal from 'sweetalert2';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,25 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
+  loginForm = new FormGroup({     
+    email: new FormControl('', [Validators.required, Validators.email]),     
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]),   
+  });
+
+  get email(): AbstractControl {     
+    return this.loginForm.get('email');   
+  }
+
+  get password(): AbstractControl {     
+    return this.loginForm.get('password');   
+  }
+
   public idUser:number;
   public idU:number;
   public showMsg = false;
   public msg = '';
-  public email:string;
-  public password:string;
+  // public email:string;
+  // public password:string;
 
   public idEmail:string;
 
@@ -30,27 +44,27 @@ export class LoginComponent implements OnInit {
   }
 
   public login():void{
-    this.authService.loginWithEmilPassword(this.email, this.password).then(
+    this.authService.loginWithEmilPassword(this.email.value, this.password.value).then(
       (value)=>{console.log(value);
-        this.usuarioService.findByEmail(this.email).subscribe((usuario)=>{
+        this.usuarioService.findByEmail(this.email.value).subscribe((usuario)=>{
           this.idUser =  usuario.idTipoUsuario;
           this.idU = usuario.idUsuario;
           this.idEmail = usuario.correoElectronico;
           localStorage.setItem('idUsuario', this.idU.toString());
           localStorage.setItem('email', this.idEmail);
-          console.log(this.idU);
           this.routing();
         },error => {
           this.msg = error.error;
           this.showMsg = true;
         });
       },error => {
-        this.msg = error.error;
-        this.showMsg = true;
+        // this.msg = error.error;
+        // this.showMsg = true;
+        // console.log(error);
         Swal.fire({
           position: 'center',
           icon: 'error',
-          title: 'Credenciales incorrectas',
+          title: error.message,
           showConfirmButton: true
         });
       }
@@ -63,6 +77,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/cliente']);
     } else if (this.idUser === 2) {
       this.router.navigate(['/abogado']);   
+    } else if (this.idUser === 3){
+      this.router.navigate(['/administrador']);
     }
   }
 

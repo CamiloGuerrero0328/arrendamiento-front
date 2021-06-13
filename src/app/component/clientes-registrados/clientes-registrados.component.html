@@ -1,0 +1,28 @@
+<h1 id="liscue">Lista Clientes Arrendadores</h1>
+
+<div *ngIf="showMsg">
+  {{msg}}
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <td>NOMBRE</td>
+    <td>APELLIDO</td>
+    <td>TELEFONO</td>
+    <td>DOCUMENTO</td>
+    <td>OPCIONES</td>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let Cliente of listaCliente">
+    <td>{{Cliente.nombreCliente}}</td>
+    <td>{{Cliente.apellidoCliente}}</td>
+    <td>{{Cliente.telefonoCliente}}</td>
+    <td>{{Cliente.documento}}</td>
+    <td>
+      <button  class="btn btn-success">Ver Inmuebles</button>
+    </td>
+  </tr>
+</tbody>
+</table>

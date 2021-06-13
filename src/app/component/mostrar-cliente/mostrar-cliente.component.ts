@@ -11,32 +11,32 @@ import { ClienteService } from 'src/app/service/cliente.service';
 })
 export class MostrarClienteComponent implements OnInit {
 
-  public cliente:Cliente = new Cliente('', '', 0, '', 0, 0, 0, 0);
+  public cliente: Cliente = new Cliente('', '', 0, '', 0, 0, 0, 0);
 
   public subFindAll: Subscription;
 
   public showMsg: boolean = false;
   public msg: string;
 
-  constructor(public clienteService:ClienteService,
-              public route: Router,
-              public activedRoute: ActivatedRoute) { }
+  constructor(public clienteService: ClienteService,
+    public route: Router,
+    public activedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.mostrarcliente();
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
   }
 
-  public mostrarcliente():void{
+  public mostrarcliente(): void {
     const params = this.activedRoute.params[`_value`];
     const id = params.id;
     this.subFindAll = this.clienteService.findById(id).subscribe(
-      data => {this.cliente = data;
-      console.log(data);},
+      data => {
+        this.cliente = data;
+      },
       error => this.msg = error.error.message
     );
   }

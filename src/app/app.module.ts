@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +37,13 @@ import { ResponsePaycoComponent } from './component/response-payco/response-payc
 import { TarjetaInmuebleComponent } from './component/tarjeta-inmueble/tarjeta-inmueble.component';
 import { EditarInmuebleComponent } from './component/editar-inmueble/editar-inmueble.component';
 import { InmuebleAplicadoComponent } from './component/inmueble-aplicado/inmueble-aplicado.component';
+import { ResponseMesComponent } from './component/response-mes/response-mes.component';
+import { AdministradorComponent } from './component/administrador/administrador.component';
+import { ClientesRegistradosComponent } from './component/clientes-registrados/clientes-registrados.component';
+import { AbogadosRegistradosComponent } from './component/abogados-registrados/abogados-registrados.component';
+import { InmuebleRegistradosComponent } from './component/inmueble-registrados/inmueble-registrados.component';
+import { MiPerfilComponent } from './component/mi-perfil/mi-perfil.component';
+import { EditarDocumentosComponent } from './component/editar-documentos/editar-documentos.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +73,14 @@ import { InmuebleAplicadoComponent } from './component/inmueble-aplicado/inmuebl
     TarjetaInmuebleComponent,
     EditarInmuebleComponent,
     InmuebleAplicadoComponent,
+    ResponseMesComponent,
+    AdministradorComponent,
+    ClientesRegistradosComponent,
+    AbogadosRegistradosComponent,
+    InmuebleRegistradosComponent,
+    MiPerfilComponent,
+    EditarDocumentosComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -78,6 +93,7 @@ import { InmuebleAplicadoComponent } from './component/inmueble-aplicado/inmuebl
     ModalModule.forRoot(),
     PdfViewerModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

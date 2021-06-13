@@ -1,0 +1,148 @@
+<div class="mx-auto text-center" style="padding-top: 10px;">
+    <h1 id="titulo">Editar Documentos</h1>
+</div>
+<div class="row" style="padding-top: 10px; padding-right: 400px;">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="container card" style="width: 900px; border-width: 20px; border-radius: 10px;">
+            <form>
+
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Rut:</label>
+                        <div class="row">
+                            <div class="col">
+                                <img *ngIf="this.documento.rut === null" class="img" src="assets/img/noImagen.png"
+                                    id="logo" alt="User Icon" />
+                                <iframe *ngIf="this.documento.rut != null" Type="application/pdf"
+                                    [src]="documento.rut | pipe" width="100%" height="100%" frameborder="0"
+                                    style="display: block; width: 300px;"></iframe>
+                            </div>
+                            <div class="col" style="padding-left: 30px; padding-top: 60px;">
+                                <button class="btn btn-danger"
+                                    (click)="borrarDocumentoRut(documento.rut)">Borrar</button>
+                                <div style="padding-top: 30px;">
+                                </div>
+                                <input (change)="agregarDocumentoRut($event)" type="file" id="inputFile" lang="es">
+                                <label for="inputFile" data-browse="Subir Rut"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Codeudor:</label>
+                        <div class="row">
+                            <div class="col">
+                                <img *ngIf="this.documento.codeudor === null" class="img" src="assets/img/noImagen.png"
+                                    id="logo" alt="User Icon" />
+                                <iframe *ngIf="this.documento.codeudor != null" Type="application/pdf"
+                                    [src]="documento.codeudor | pipe" width="100%" height="100%" frameborder="0"
+                                    style="display: block; width: 300px;" name="codeudor" #codeudor></iframe>
+                            </div>
+                            <div class="col" style="padding-left: 30px; padding-top: 60px;">
+                                <button class="btn btn-danger"
+                                    (click)="borrarDocumentoCodeudor(documento.codeudor)">Borrar</button>
+                                <div style="padding-top: 30px;">
+                                </div>
+                                <input (change)="agregarDocumentoCodeudor($event)" type="file" id="inputFile" lang="es">
+                                <label for="inputFile" data-browse="Subir Codeudor"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Carta laboral:</label>
+                        <div class="row">
+                            <div class="col">
+                                <img *ngIf="this.documento.cartaLaboral === null" class="img"
+                                    src="assets/img/noImagen.png" id="logo" alt="User Icon" />
+                                <iframe *ngIf="this.documento.cartaLaboral != null" Type="application/pdf"
+                                    [src]="documento.cartaLaboral | pipe" width="100%" height="100%" frameborder="0"
+                                    style="display: block; width: 300px;"></iframe>
+                            </div>
+                            <div class="col" style="padding-left: 30px; padding-top: 60px;">
+                                <button class="btn btn-danger"
+                                    (click)="borrarDocumentoCartaLaboral(documento.cartaLaboral)">Borrar</button>
+                                <div style="padding-top: 30px;">
+                                </div>
+                                <input (change)="agregarDocumentoCartaLaboral($event)" type="file" id="inputFile"
+                                    lang="es">
+                                <label for="inputFile" data-browse="Subir Rut"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Cedula:</label>
+                        <div class="row">
+                            <div class="col">
+                                <img *ngIf="this.documento.cedulaCiudadania === null" class="img"
+                                    src="assets/img/noImagen.png" id="logo" alt="User Icon" />
+                                <iframe *ngIf="this.documento.cedulaCiudadania != null" Type="application/pdf"
+                                    [src]="documento.cedulaCiudadania | pipe" width="100%" height="100%" frameborder="0"
+                                    style="display: block; width: 300px;"></iframe>
+                            </div>
+                            <div class="col" style="padding-left: 30px; padding-top: 60px;">
+                                <button class="btn btn-danger"
+                                    (click)="borrarDocumentoCedula(documento.cedulaCiudadania)">Borrar</button>
+                                <div style="padding-top: 30px;">
+                                </div>
+                                <input (change)="agregarDocumentoCedula($event)" type="file" id="inputFile" lang="es">
+                                <label for="inputFile" data-browse="Subir Rut"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Solicitud arrendamiento:</label>
+                        <div class="row">
+                            <div class="col">
+                                <img *ngIf="this.documento.solicitudArrendamiento === null" class="img"
+                                    src="assets/img/noImagen.png" id="logo" alt="User Icon" />
+                                <iframe *ngIf="this.documento.solicitudArrendamiento != null" Type="application/pdf"
+                                    [src]="documento.solicitudArrendamiento | pipe" width="100%" height="100%"
+                                    frameborder="0" style="display: block; width: 300px;"></iframe>
+                            </div>
+                            <div class="col" style="padding-left: 30px; padding-top: 60px;">
+                                <button class="btn btn-danger"
+                                    (click)="borrarDocumentoSolicitud(documento.solicitudArrendamiento)">Borrar</button>
+                                <div style="padding-top: 30px;">
+                                </div>
+                                <input (change)="agregarDocumentoSolicitud($event)" type="file" id="inputFile"
+                                    lang="es">
+                                <label for="inputFile" data-browse="Subir Rut"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="container" style="padding-top: 40px;">
+                    <div class="row">
+                        <div>
+                            <button class="btn btn-link" type="button" routerLink="../../mi-perfil">Cancel</button>
+                        </div>
+
+                        <!-- <div class="col-3">
+
+                        </div>
+                        <div class="col" style="padding-left: 127px;">
+                            <button class="btn btn-danger" style="margin-right:5px;">Cancel</button>
+                        </div> -->
+
+                    </div>
+                </div>
+                <div style="padding-top: 10px;">
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

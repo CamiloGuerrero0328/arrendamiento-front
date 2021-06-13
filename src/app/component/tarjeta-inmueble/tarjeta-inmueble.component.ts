@@ -33,8 +33,7 @@ export class TarjetaInmuebleComponent implements OnInit {
               public clientService:ClienteService) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
-    this.idProceso = Math.floor(Math.random() * 200);
+    this.idProceso = Math.floor(Math.random() * 800);
     this.findByIdCliente();
   } 
 
@@ -42,14 +41,12 @@ export class TarjetaInmuebleComponent implements OnInit {
     this.clientService.findClientByIdUser(Number(localStorage.getItem('idUsuario'))).subscribe(
       (cliente)=>{
       this.idCliente = cliente.idCliente;
-      console.log(this.idCliente);
     });
   }
 
   public aplicar(idInmueble:number,modal: TemplateRef<any>){
     this.idInmueble = idInmueble;
     this.modalRef = this.modalService.show(modal, this.config);
-    Swal.fire('Proceso creado con exito');
   }
 
   public save():void{
@@ -57,8 +54,8 @@ export class TarjetaInmuebleComponent implements OnInit {
       this.idCliente, this.idInmueble, null, false);
     this.procesoService.save(this.proceso).subscribe(
       (proceso)=>{
-        console.log(proceso);
         Swal.fire('Proceso creado con exito');
+        this.modalRef.hide();
     },(error)=>{
       console.log("Hay un error"+error.error);
     });

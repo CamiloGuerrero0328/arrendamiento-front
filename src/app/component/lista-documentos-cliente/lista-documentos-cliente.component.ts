@@ -34,12 +34,10 @@ export class ListaDocumentosClienteComponent implements OnInit {
     private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.findByIdCliente();
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
   }
 

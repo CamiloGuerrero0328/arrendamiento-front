@@ -24,12 +24,10 @@ export class ListaInmuebleClienteComponent implements OnInit {
               public activedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.findByIdClient();
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
   }
 

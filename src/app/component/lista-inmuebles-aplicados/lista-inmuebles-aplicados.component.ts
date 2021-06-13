@@ -21,12 +21,10 @@ export class ListaInmueblesAplicadosComponent implements OnInit {
               public router: Router) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.findAll();
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
   }
 

@@ -6,25 +6,38 @@
   <div class="col-3"></div>
   <div class="col-6">
     <div id="login" class="mx-auto">
-      <form>
+
+      <form [formGroup]="clienteForm" (ngSubmit)="registerCliente()">
+
         <div class="form-group">
-          <input [(ngModel)]="nombre" placeholder="NOMBRE COMPLETO" name="nombre" id="email" type="email"
-            class="form-control" required>
+          <input formControlName="nombre" [class.is-invalid]="nombre.invalid && nombre.touched"
+            placeholder="NOMBRE COMPLETO" name="nombre" id="email" type="email" class="form-control" required>
+          <div *ngIf="nombre.invalid && nombre.touched" class="invalid-feedback">
+            <div *ngIf="nombre.errors.required">El Nombre es necesario</div>
+          </div>
         </div>
 
         <div class="form-group">
-          <input [(ngModel)]="apellido" placeholder="APELLIDO COMPLETO" name="apellido" id="password" type="text"
-            class="form-control" required>
+          <input formControlName="apellido" [class.is-invalid]="apellido.invalid && apellido.touched"
+            placeholder="APELLIDO COMPLETO" name="apellido" id="password" type="text" class="form-control" required>
+          <div *ngIf="apellido.invalid && apellido.touched" class="invalid-feedback">
+            <div *ngIf="apellido.errors.required">El Apellido es necesario</div>
+          </div>
         </div>
 
         <div class="form-group">
-          <input [(ngModel)]="telefono" placeholder="TELEFONO" name="telefono" id="password" type="text"
-            class="form-control" required>
+          <input formControlName="telefono" [class.is-invalid]="telefono.invalid && telefono.touched"
+            placeholder="TELEFONO" name="telefono" id="password" type="text" class="form-control" maxlength="10"
+            required>
+          <div *ngIf="telefono.invalid && apellido.touched" class="invalid-feedback">
+            <div *ngIf="telefono.errors.required">El Telefono es necesario</div>
+            <div *ngIf="telefono.errors.maxLength">El Telefono es maximo de 10 caracteres</div>
+          </div>
         </div>
 
         <div class="form-group">
-          <select [(ngModel)]="tipoDocumento" class="form-control" name="tipoUsuario" required>
-            <option disabled selected>Tipo Documento</option>
+          <select formControlName="tipoDocumento" class="form-control" name="tipoUsuario" required>
+            <option value="" disabled>TIPO DOCUMENTO</option>
             <option value="1">Cedula Ciudadania</option>
             <option value="2">Tarjeta Identidad</option>
             <option value="3">Pasaporte</option>
@@ -32,22 +45,25 @@
         </div>
 
         <div class="form-group">
-          <input [(ngModel)]="documento" placeholder="DOCUMENTO" name="documento" id="password" type="text"
-            class="form-control" required>
+          <input formControlName="documento" [class.is-invalid]="documento.invalid && documento.touched"
+            placeholder="DOCUMENTO" name="documento" id="password" type="text" class="form-control" required>
+          <div *ngIf="documento.invalid && documento.touched" class="invalid-feedback">
+            <div *ngIf="documento.errors.required">El Documento es necesario</div>
+          </div>
         </div>
 
         <div class="form-group">
-          <select [(ngModel)]="tipoCliente" class="form-control" name="tipoCliente" required>
-            <option disabled selected>Tipo Cliente</option>
-            <option value="1">Arrendatario</option>
-            <option value="2">Arrendador</option>
+          <select formControlName="tipoCliente" class="form-control" name="tipoCliente">
+            <option value="" disabled>TIPO CLIENTE</option>
+            <option ngValue="1">Arrendatario</option>
+            <option ngValue="2">Arrendador</option>
           </select>
         </div>
 
         <div class="container">
           <div class="row">
             <div class="col">
-              <button class="btn btn-primary" (click)="registerCliente()">Registrar</button>
+              <button class="btn btn-primary" type="submit" [disabled]="!clienteForm.valid">Registrar</button>
             </div>
             <div class="col-3">
 
@@ -58,6 +74,7 @@
           </div>
         </div>
       </form>
+
     </div>
   </div>
   <div class="col-3">

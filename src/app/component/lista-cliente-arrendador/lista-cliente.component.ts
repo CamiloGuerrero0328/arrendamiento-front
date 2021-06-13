@@ -21,12 +21,10 @@ export class ListaClienteComponent implements OnInit {
               public router: Router) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.findAll();
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
   }
 
@@ -39,13 +37,5 @@ export class ListaClienteComponent implements OnInit {
       data => { this.listaCliente = data; }
     );
   }
-
-  // public findAll(): void {
-  //   this.subFindAll = this.clienteService.findByTipoCliente(2).subscribe(
-  //     data => { this.listaCliente = data; }
-  //   );
-  // }
-
-
 
 }

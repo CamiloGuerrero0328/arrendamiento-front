@@ -31,7 +31,7 @@ export class EditarInmuebleComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('ngOnInit');
-    this.inmueble = new Inmueble("", "", "", this.params.id, "", 0);
+    this.inmueble = new Inmueble("", "", "", this.params.id, "", 0, 0);
     this.findByIdInmueble();
   }
 
@@ -39,13 +39,11 @@ export class EditarInmuebleComponent implements OnInit {
     this.inmuebleService.findByIdInmueble(this.params.id).subscribe(
       (inmueble) => {
         this.inmueble = inmueble[0];
-        console.log(this.inmueble);
       }, error => {
         this.showMsg = true;
         this.msg = error.error.message;
         console.log("Error");
       }, () => {
-        console.log("Complete");
       }
     );
   }
@@ -55,13 +53,11 @@ export class EditarInmuebleComponent implements OnInit {
       data => {
         this.showMsg = true;
         this.msg = "El inmueble se edito con exito";
-        console.log("Next");
       }, error => {
         this.showMsg = true;
         this.msg = error.error.message;
         console.log("Error");
       }, () => {
-        console.log("Complete");
       }
     );
   }

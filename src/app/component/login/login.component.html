@@ -1,26 +1,39 @@
-    <div *ngIf="showMsg" class="mx-auto text-center">
-      {{msg}}
+<div *ngIf="showMsg" class="mx-auto text-center">
+  {{msg}}
+</div>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <img class="img" src="assets/img/U-Rent.png" id="logo" alt="User Icon" />
     </div>
+    <h6>Ingresa a la plataforma</h6>
 
-    <div class="wrapper fadeInDown">
-      <div id="formContent">
-        <div class="fadeIn first">
-          <img class="img" src="assets/img/U-Rent.jpg" id="logo" alt="User Icon" />
-        </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-        <form>
-          <input [(ngModel)]="email" type="text" id="login" class="fadeIn second" name="login" placeholder="Correo">
-          <input [(ngModel)]="password" type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
-          <input (click)="login()" type="submit" class="fadeIn fourth" value="Log In">
-        </form>
-
-        <div id="formFooter">
-          <a class="underlineHover" href="#">Forgot Password?</a>
-          <div>
-
-          </div>
-          <a class="underlineHover" href="/register">Register</a>
-        </div>
-    
+      <input formControlName="email" [class.is-invalid]="email.invalid && email.touched" type="email" id="login"
+        class="fadeIn second" name="login" placeholder="Correo Electronico">
+      <div *ngIf="email.invalid && email.touched" class="invalid-feedback">
+        <div *ngIf="email.errors.required">El correo electrónico es necesario</div>
+        <div *ngIf="email.errors.email">Formato de correo incorrecto</div>
       </div>
+
+      <input formControlName="password" [class.is-invalid]="password.invalid && password.touched" type="password"
+        id="password" class="fadeIn third" name="login" maxlength="30" minlength="6" placeholder="Contraseña">
+      <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+        <div *ngIf="password.errors.required">La contraseña es necesaria</div>
+        <div *ngIf="password.errors.minlength">La contraseña debe tener mínimo 6 caracteres</div>
+        <div *ngIf="password.errors.maxlength">La contraseña debe tener mínimo 30 caracteres</div>
+      </div>
+
+      <input type="submit" class="fadeIn fourth" value="Ingresar" [disabled]="!loginForm.valid">
+
+    </form>
+
+    <div id="formFooter">
+
+      <a class="underlineHover" href="/register">Registrar</a>
     </div>
+
+  </div>
+</div>

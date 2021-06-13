@@ -35,7 +35,7 @@ export class AbogadoService {
     return this.httpClient.put(this.url + '/update', abogado);
   }
   
-  public delete(id:string): Observable<any>{
-    return this.httpClient.delete(this.url+'/delete'+id);
+  public delete(id:number): Observable<any>{
+    return this.httpClient.delete(this.url+'/delete/'+id);
   }
 }

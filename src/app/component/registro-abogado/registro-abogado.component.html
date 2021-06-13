@@ -6,32 +6,47 @@
     <div class="col-3"></div>
     <div class="col-6">
         <div id="login" class="mx-auto">
-            <form>
+
+            <form [formGroup]="abogadoForm" (ngSubmit)="registrarAbogado()">
+
                 <div class="form-group">
-                    <input [(ngModel)]="nombre" placeholder="NOMBRE COMPLETO" name="nombre" id="email" type="email"
-                        class="form-control" required>
+                    <input formControlName="nombre" [class.is-invalid]="nombre.invalid && nombre.touched"
+                        placeholder="NOMBRE COMPLETO" name="nombre" id="email" type="email" class="form-control"
+                        required>
+                    <div *ngIf="nombre.invalid && nombre.touched" class="invalid-feedback">
+                        <div *ngIf="nombre.errors.required">El Nombre es necesario</div>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <input [(ngModel)]="apellido" placeholder="APELLIDO COMPLETO" name="apellido" id="password"
-                        type="text" class="form-control" required>
+                    <input formControlName="apellido" [class.is-invalid]="apellido.invalid && apellido.touched"
+                        placeholder="APELLIDO COMPLETO" name="apellido" id="password" type="text" class="form-control"
+                        required>
+                    <div *ngIf="apellido.invalid && apellido.touched" class="invalid-feedback">
+                        <div *ngIf="apellido.errors.required">El Apellido es necesario</div>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <input [(ngModel)]="telefono" placeholder="TELEFONO" name="telefono" id="password" type="number"
-                        class="form-control" required>
+                    <input formControlName="telefono" [class.is-invalid]="telefono.invalid && telefono.touched"
+                        placeholder="TELEFONO" name="telefono" id="password" type="number" class="form-control"
+                        maxlength="10" required>
+                    <div *ngIf="telefono.invalid && apellido.touched" class="invalid-feedback">
+                        <div *ngIf="telefono.errors.required">El Telefono es necesario</div>
+                        <div *ngIf="telefono.errors.maxLength">El Telefono es maximo de 10 caracteres</div>
+                    </div>
                 </div>
 
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-primary" (click)="registrarAbogado()">Registrar</button>
+                            <button class="btn btn-primary" type="submit" [disabled]="!abogadoForm.valid">Registrar</button>
                         </div>
                         <div class="col-3">
 
                         </div>
                         <div class="col">
-                            <button routerLink="/login" class="btn btn-primary">Cancelar</button>
+                            <button routerLink="/abogado" class="btn btn-primary">Cancelar</button>
                         </div>
                     </div>
                 </div>

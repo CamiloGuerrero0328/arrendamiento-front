@@ -43,13 +43,12 @@ export class DocumentosComponent implements OnInit {
   public subirCedula(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}.pdf`;
+    const filePath = `documentos/cedula_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
       ref.getDownloadURL().subscribe(
         (url)=>{
-          console.log(url);
           this.urlCedula=url;
           Swal.fire('Cedula subida con exito');
           this.subidoCedula = true;
@@ -61,13 +60,12 @@ export class DocumentosComponent implements OnInit {
   public subirCodeudor(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}.pdf`;
+    const filePath = `documentos/codeudor_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
       ref.getDownloadURL().subscribe(
         (url)=>{
-          console.log(url);
           this.urlCodeudor=url;
           Swal.fire('Codeudor subido con exito');
           this.subidoCodeudor = true;
@@ -79,13 +77,12 @@ export class DocumentosComponent implements OnInit {
   public subirCarta(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}.pdf`;
+    const filePath = `documentos/cartaLaboral_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
       ref.getDownloadURL().subscribe(
         (url)=>{
-          console.log(url);
           this.urlCarta=url;
           Swal.fire('Carta subida con exito');
           this.subidoCarta = true;
@@ -97,13 +94,12 @@ export class DocumentosComponent implements OnInit {
   public subirRut(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}.pdf`;
+    const filePath = `documentos/rut_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
       ref.getDownloadURL().subscribe(
         (url)=>{
-          console.log(url);
           this.urlRut=url;
           Swal.fire('Rut subido con exito');
           this.subidoRut = true;
@@ -115,13 +111,12 @@ export class DocumentosComponent implements OnInit {
   public subirSolicitud(e:any):void{
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
-    const filePath = `documentos/profile_${id}.pdf`;
+    const filePath = `documentos/solicitudArrendamiento_${id}.pdf`;
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task.snapshotChanges().pipe(finalize(()=>{
       ref.getDownloadURL().subscribe(
         (url)=>{
-          console.log(url);
           this.ulrSolicitud=url;
           Swal.fire('Solicitud subida con exito');
           this.subidoSolicitud = true;
@@ -135,7 +130,6 @@ export class DocumentosComponent implements OnInit {
       this.idDocumentos, this.urlRut, this.ulrSolicitud, this.idCliente);
     this.documentService.save(this.documentos).subscribe(
       (documentos)=>{
-        console.log(documentos);
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -152,7 +146,6 @@ export class DocumentosComponent implements OnInit {
     this.clientService.findClientByIdUser(Number(localStorage.getItem('idUsuario'))).subscribe(
       (cliente)=>{
       this.idCliente = cliente.idCliente;
-      console.log(this.idCliente);
     });
   }
 

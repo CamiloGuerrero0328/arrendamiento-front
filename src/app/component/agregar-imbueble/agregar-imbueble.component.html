@@ -1,4 +1,4 @@
-<div class="mx-auto text-center">
+<div class="mx-auto text-center" style="padding-top: 10px;">
   <h1 id="titulo">Agregar Inmueble</h1>
 </div>
 
@@ -6,67 +6,82 @@
   {{msg}}
 </div>
 
-<div class="row">
+<div class="row" style="padding-top: 10px;">
   <div class="col-3"></div>
   <div class="col-6">
-    <div id="login" class="container mx-auto card">
-      <div class="row">
-        <div class="col">
+    <div class="container card" style="width: 500px; border-width: 20px; border-radius: 10px;">
+
+      <form [formGroup]="inmuebleForm" (ngSubmit)="crear()">
+
+        <div class="col" style="padding-top: 10px;">
           <label for="exampleInputPassword2">Tipo Inmueble</label>
-          <select [(ngModel)]="tipoInmueble" class="form-control" name="tipoInmueble" required>
-            <option disabled selected>Tipo Inmueble</option>
-            <option value="Casa">Casa</option>
-            <option value="Apartamento">Apartamento</option>
-            <option value="Finca">Finca</option>
-            <option value="Local">Local</option>
+          <select formControlName="tipoInmueble" class="form-control" name="tipoInmueble" required>
+            <option value="" disabled >Tipo Inmueble</option>
+            <option ngValue="Casa">Casa</option>
+            <option ngValue="Apartamento">Apartamento</option>
+            <option ngValue="Finca">Finca</option>
+            <option ngValue="Local">Local</option>
           </select>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col">
+        <div class="col" style="padding-top: 10px;">
           <label for="exampleInputPassword2">Direccion</label>
-          <input [(ngModel)]="direccion" #balance name="direccion" placeholder="Direccion" type="text"
-            class="form-control" id="direccion"><br />
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-            <div class="custom-file mb-3">
-                <input type="file" class="custom-file-input" id="validatedCustomFile" (change)='subirImagen($event)' required>
-                <label class="custom-file-label" for="validatedCustomFile">Imagen inmueble</label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+          <input formControlName="direccion" [class.is-invalid]="direccion.invalid && direccion.touched" #balance name="direccion" placeholder="Direccion" type="text"
+            class="form-control" id="direccion" required>
+            <div *ngIf="direccion.invalid && direccion.touched" class="invalid-feedback">
+              <div *ngIf="direccion.errors.required">La direccion es necesaria</div>
             </div>
         </div>
-      </div>
 
-      <div class="row">
         <div class="col">
+          <label for="exampleInputPassword2">Imagen</label>
+          <div class="custom-file mb-3">
+            <input type="file"  class="custom-file-input" id="validatedCustomFile" (change)='subirImagen($event)'
+              required [disabled]="subidoImagen">
+            <label class="custom-file-label" for="validatedCustomFile">Imagen inmueble</label>
+            <small *ngIf="!imgFile">La imagen es obligatoria</small>
+          </div>
+        </div>
+
+        <div class="col" style="padding-top: 10px;">
           <label for="exampleInputPassword4">Descripcion</label>
-          <input [(ngModel)]="descripcion" #version name="descripcion" placeholder="Descripcion" type="text"
-            id="descripcion" class="form-control"><br />
+          <input formControlName="descripcion" [class.is-invalid]="descripcion.invalid && descripcion.touched" #version name="descripcion" placeholder="Descripcion" type="text"
+            id="descripcion" class="form-control" required>
+            <div *ngIf="descripcion.invalid && descripcion.touched" class="invalid-feedback">
+              <div *ngIf="descripcion.errors.required">La descripcion es necesaria</div>
+            </div>
         </div>
-      </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <button class="btn btn-primary" mat-raised-button (click)="crear()" style="margin-right:5px;">Crear</button>
-          </div>
-          <div class="col-3">
+        <div class="col">
+          <label for="exampleInputPassword4">Precio inmueble</label>
+          <input formControlName="monto" [class.is-invalid]="monto.invalid && monto.touched" #version name="monto" placeholder="Precio" type="text" id="descripcion"
+            class="form-control" maxlength="6" minlength="4" required>
+            <small>Valor minimo "1.000", valor maximo "199.999"</small>
+            <div *ngIf="monto.invalid && monto.touched" class="invalid-feedback">
+              <div *ngIf="monto.errors.required">El valor es necesario</div>
+              <div *ngIf="monto.errors.maxLength">El valor tiene un valor maximo de 199.999</div>
+              <div *ngIf="monto.errors.minLength">El valor tiene un valor minimo de 1.000</div>
+            </div>
+        </div>
+
+
+        <div class="container" style="padding-top: 10px;">
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-primary" type="submit" [disabled]="!inmuebleForm.valid" style="margin-right:10px;">Crear</button>
+            </div>
+
+            <div>
+              <button class="btn btn-danger" type="button" routerLink="../agregar-inmueble"
+                style="margin-right:5px;">Cancelar</button>
+            </div>
 
           </div>
-          <div class="col">
-            <button class="btn btn-danger" mat-raised-button routerLink="../agregar-inmueble" style="margin-right:5px;">Cancelar</button>
-          </div>
+        </div>
+        <div style="padding-top: 10px;">
 
         </div>
-      </div>
+      </form>
     </div>
   </div>
-  <div class="col-3">
-
-  </div>
-
 </div>

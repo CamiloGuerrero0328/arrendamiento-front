@@ -15,7 +15,7 @@ export class InmuebleService {
     this.url = environment.apiUrl + '/api/inmueble';
   }
 
-  public findById(id:string): Observable<any>{
+  public findById(id:number): Observable<any>{
     return this.httpClient.get(this.url+'/findById/'+id);
   }
 

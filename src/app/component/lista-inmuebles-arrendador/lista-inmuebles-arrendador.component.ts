@@ -42,7 +42,6 @@ export class ListaInmueblesArrendadorComponent implements OnInit {
     public reporteService: ReporteService) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.idUser = Number(localStorage.getItem('idUsuario'));
     //this.report = new Reporte(0, " ", false, 0, 0);
     this.insertIdCliente();
@@ -50,7 +49,6 @@ export class ListaInmueblesArrendadorComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
   }
 
@@ -58,7 +56,6 @@ export class ListaInmueblesArrendadorComponent implements OnInit {
     this.clienteService.findClientByIdUser(this.idUser).subscribe(
       (cliente)=>{
         this.idcliente = cliente.idCliente;
-        console.log(this.idcliente);
         this.inmuebleCliente();
     },(error)=>{
       console.log("Hay un error"+error.error.message);
@@ -78,7 +75,6 @@ export class ListaInmueblesArrendadorComponent implements OnInit {
       data => {
         this.showMsg = true;
         this.msg = "El inmueble se borro con exito";
-        console.log("Next");
       }, error => {
         this.showMsg = true;
         this.msg = error.error.message;
@@ -95,7 +91,6 @@ export class ListaInmueblesArrendadorComponent implements OnInit {
       data => {
         this.showMsg = true;
         this.msg = "El inmueble se edito con exito";
-        console.log("Next");
       }, error => {
         this.showMsg = true;
         this.msg = error.error.message;
@@ -116,7 +111,6 @@ export class ListaInmueblesArrendadorComponent implements OnInit {
     this.reporteService.findByIdInmueble(idInmueble).subscribe(
       (reporte) => {
         this.report = reporte;
-        console.log(reporte);
       }, error => {
         this.showMsg = true;
         this.msg = error.error.message;

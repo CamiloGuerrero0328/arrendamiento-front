@@ -42,7 +42,7 @@ export class ArrendatarioAplicadosComponent implements OnInit {
 
   ngOnInit(): void {
     this.idUser = Number(localStorage.getItem('idUsuario'));
-    this.inmueble = new Inmueble("", "", "", 0, "", 0);
+    this.inmueble = new Inmueble("", "", "", 0, "", 0, 0);
     this.insertIdCliente();
   }
 
@@ -55,13 +55,10 @@ export class ArrendatarioAplicadosComponent implements OnInit {
     this.inmuebleService.findByIdInmueble(idInmueble_Inmueble).subscribe(
       (inmueble) => {
         this.inmueble = inmueble[0];
-        console.log(this.inmueble);
       }, error => {
         this.showMsg = true;
         this.msg = error.error.message;
-        console.log("Error");
       }, () => {
-        console.log("Complete");
       }
     );
   }
@@ -70,10 +67,8 @@ export class ArrendatarioAplicadosComponent implements OnInit {
     this.clienteService.findClientByIdUser(this.idUser).subscribe(
       (cliente)=>{
         this.idcliente = cliente.idCliente;
-        console.log(this.idcliente);
         this.procesoCliente();
     },(error)=>{
-      console.log("Hay un error"+error.error.message);
     }
     );
   }
@@ -92,7 +87,7 @@ export class ArrendatarioAplicadosComponent implements OnInit {
   }
 
   public pagar(idProceso:number):void{
-
+    
     localStorage.setItem('proceso',idProceso.toString());
     
     const ref = Math.random().toString(36).substring(2).toUpperCase();
@@ -123,6 +118,7 @@ export class ArrendatarioAplicadosComponent implements OnInit {
       extra3: "extra3",
       // confirmation: "http://secure2.payco.co/prueba_curl.php",
       response: "https://arrendamiento-pc.web.app/cliente/response",
+      //response: "http://localhost:4200/cliente/response",
 
       //Atributos cliente
       name_billing: "Andres Perez",

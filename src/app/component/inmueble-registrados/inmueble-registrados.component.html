@@ -1,0 +1,40 @@
+<div id="title" class="mx-auto text-center">
+    <h1 id="titulo">Registro cuenta abogado</h1>
+  </div>
+  
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div id="login" class="mx-auto">
+        <form>
+          <div class="form-group">
+            <input [(ngModel)]="email" name="email" placeholder="Correo electronico"  type="email"
+              class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <input [(ngModel)]="password" name="password" placeholder="Contrasena" type="password"
+              class="form-control" required>
+          </div>
+  
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <button class="btn btn-primary" (click)="registerCuenta()">Registrar</button>
+              </div>
+              <div class="col-3">
+  
+              </div>
+              <div class="col">
+                <button routerLink="/administrador" class="btn btn-primary">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-3">
+  
+    </div>
+  
+  </div>

@@ -16,12 +16,16 @@ export class UsuarioService {
     this.url = environment.apiUrl + '/api/usuario';
   }
 
-  public findById(id:string): Observable<any>{
+  public findById(id:number): Observable<any>{
     return this.httpClient.get(this.url+'/findById/'+id);
   }
 
   public findByEmail(id:string): Observable<any>{
     return this.httpClient.get(this.url+'/findByEmail/'+id);
+  }
+
+  public findByTipoUsuario(id:number): Observable<any>{
+    return this.httpClient.get(this.url+'/findByTipoUsuario/'+id);
   }
   
     public findAll(): Observable<any>{
@@ -36,7 +40,7 @@ export class UsuarioService {
       return this.httpClient.put(this.url + '/update', usuario);
     }
   
-    public delete(id:string): Observable<any>{
-      return this.httpClient.delete(this.url+'/delete'+id);
+    public delete(id:number): Observable<any>{
+      return this.httpClient.delete(this.url+'/delete/'+id);
     }
 }

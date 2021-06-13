@@ -5,6 +5,7 @@ export class Inmueble{
         public imagen:string,
         public idInmueble:number,
         public tipoInmueble:string,
-        public idCliente:number
+        public idCliente:number,
+        public monto:number,
     ){}
 }

@@ -7,7 +7,6 @@
 <table class="table table-striped">
     <thead class="thead-dark">
     <tr>
-      <td>ID</td>
       <td>NOMBRE PROCESO</td>
       <td>FECHA APLICADO</td>
       <td>PAGADO</td>
@@ -16,15 +15,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let Proceso of listaProceso">
-      <td>{{Proceso.idProceso}}</td>
       <td>{{Proceso.nombreProceso}}</td>
       <td>{{Proceso.fechaProceso | date}}</td>
       <td *ngIf="Proceso.pagado===true">Pagado</td>
       <td *ngIf="Proceso.pagado===false">No pagado</td>
       <td>
         <button [routerLink]="[ '../mostrar-inmueble', Proceso.idInmueble_Inmueble ]" type="button" class="btn btn-primary">Ver Inmueble</button>
-        <button [routerLink]="[ '../mostrar-cliente', Proceso.idCliente_Cliente ]" type="button" class="btn btn-primary">Ver Cliente</button>
-        <button [disabled]="Proceso.pagado==false" [routerLink]="[ '../proceso', Proceso.idProceso ]" type="button" class="btn btn-success">Aplicar</button>
+        <button [routerLink]="[ '../mostrar-cliente', Proceso.idCliente_Cliente ]" type="button" class="btn btn-primary" style="margin-left: 5px;">Ver Cliente</button>
+        <button [disabled]="Proceso.pagado==false" [routerLink]="[ '../proceso', Proceso.idProceso ]" type="button" class="btn btn-success" style="margin-left: 5px;">Aplicar</button>
       </td>
     </tr>
   </tbody>

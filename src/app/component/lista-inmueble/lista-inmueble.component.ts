@@ -43,13 +43,11 @@ export class ListaInmuebleComponent implements OnInit {
 
   ngOnInit(): void {
     this.idProceso = Math.floor(Math.random() * 200);
-    console.log('ngOnInit');
     this.findAll();
     this.findByIdCliente();
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
     this.subFindAll.unsubscribe();
   }
 
@@ -63,7 +61,6 @@ export class ListaInmuebleComponent implements OnInit {
     this.clientService.findClientByIdUser(Number(localStorage.getItem('idUsuario'))).subscribe(
       (cliente)=>{
       this.idCliente = cliente.idCliente;
-      console.log(this.idCliente);
     });
   }
 
@@ -72,7 +69,6 @@ export class ListaInmuebleComponent implements OnInit {
       data => {
         this.showMsg = true;
         this.msg = "El inmueble se borro con exito";
-        console.log("Next");
       }, error => {
         this.showMsg = true;
         this.msg = error.error.message;
@@ -95,7 +91,6 @@ export class ListaInmuebleComponent implements OnInit {
       this.idCliente, this.idInmueble, null, false);
     this.procesoService.save(this.proceso).subscribe(
       (proceso)=>{
-        console.log(proceso);
         Swal.fire('Proceso creado con exito');
     },(error)=>{
       console.log("Hay un error"+error.error);
